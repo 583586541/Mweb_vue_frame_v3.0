@@ -1,0 +1,35 @@
+.FHeader {
+  @figure: .88rem;
+  .bg-image (@path) {
+    background: transparent url("../images/@{path}") no-repeat 0 0;
+    background-size: 100% auto;
+  }
+  line-height: @figure;
+  background-color: @themeColor;
+  &:extend(.df);
+  .left-icon {
+    width: @figure;
+    &:after {
+      content: '\200B';
+      &:extend(.dib);
+      vertical-align: top;
+      width: .26rem;
+      height: .44rem;
+      margin: .22rem 0 0 .24rem;
+      .bg-image('go_back.png');
+    }
+  }
+  .title {
+    flex: 1;
+    color: #fff;
+    font-size: .32rem;
+    text-align: center;
+    &:extend(.ellipsis);
+  }
+  .right-icon {
+    width: @figure;
+  }
+  .vh {
+    visibility: hidden;
+  }
+}

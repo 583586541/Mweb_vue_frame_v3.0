@@ -1,0 +1,96 @@
+// 相对定位
+.pr {
+  position: relative;
+}
+
+// 绝对定位
+.pa {
+  position: absolute;
+}
+
+// 固定定位
+.pf {
+  position: fixed;
+}
+
+// 左浮动
+.fl {
+  float: left;
+}
+
+// 右浮动
+.fr {
+  float: right;
+}
+
+// 块元素
+.db {
+  display: block;
+}
+
+// 行元素
+.di {
+  display: inline;
+}
+
+// 行块元素
+.dib {
+  display: inline-block;
+}
+
+// 隐藏（不占据空间）
+.dn {
+  display: none;
+}
+
+// 盒子布局
+.df {
+  display: flex;
+}
+
+// 水平居中
+.jcc {
+  &:extend(.df);
+  justify-content: center;
+}
+
+// 垂直居中
+.aic {
+  &:extend(.df);
+  align-items: center;
+}
+
+// 水平、垂直居中
+.jccaic {
+  &:extend(.df);
+  justify-content: center;
+  align-items: center;
+}
+
+// 两端对齐
+.jcsb {
+  &:extend(.df);
+  justify-content: space-between;
+}
+
+// 清除浮动
+.clearfix:after {
+  display: block;
+  content: '\200B';
+  height: 0;
+  clear: both;
+}
+
+// 超出显示省略号（单行）
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 硬件加速
+.cpu-3d {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+}

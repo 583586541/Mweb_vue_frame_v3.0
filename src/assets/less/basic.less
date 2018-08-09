@@ -1,0 +1,136 @@
+@themeColor: #01ca9e;
+
+html,
+body,
+#app,
+.v-wrap {
+  height: 100%;
+}
+
+body {
+  position: relative;
+}
+
+#app {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
+  &.no-head-state .v-wrap {
+    .FHeader {
+      display: none;
+    }
+    .v-body,
+    .v-child {
+      top: 0;
+    }
+  }
+  .v-wrap {
+    position: relative;
+    background-color: #f6f6f6;
+    .v-body,
+    .v-child {
+      position: absolute;
+      top: .88rem; // 修改头部高度
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      z-index: 1;
+      &.v-child {
+        z-index: 99;
+      }
+    }
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.bounce-enter-active {
+  animation: bounce-in .5s;
+}
+
+.bounce-leave-active {
+  animation: bounce-in .5s reverse;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.vux-loading {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: 1000;
+  .weui-toast {
+    top: 50%;
+    width: 1.28rem;
+    height: 1.28rem;
+    background-color: transparent;
+    transform: translate(-50%, -50%);
+    .weui-loading {
+      width: 1.28rem;
+      height: 1.28rem;
+      background: transparent url(../images/loading_1.gif);
+      background-size: 100% auto;
+      animation: none;
+      margin: 0;
+    }
+  }
+}
+
+.vux-toast {
+  position: relative;
+  z-index: 1000;
+  .weui-toast {
+    width: 2.44rem !important;
+    min-height: 2.44rem;
+    border-radius: .1rem;
+    .weui-icon_toast {
+      margin-top: .40rem;
+      &:before {
+        font-size: 1.1rem;
+      }
+    }
+    .weui-toast__content {
+      margin: .1rem 0 .37rem;
+      font-size: .28rem;
+      line-height: 1.5;
+    }
+  }
+}
