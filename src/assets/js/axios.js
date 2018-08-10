@@ -37,7 +37,7 @@ export default {
   dealAxiosSuc(res) {
     // 示例：接口返回状态码处理
     if (res.data.code != 1) {
-      fn.sToast(res.data.message, 'warn')
+      fn.sToast(res.data.msg)
       return false
     }
     return res.data.data
@@ -93,7 +93,7 @@ export default {
         err.message = '请求跨域'
       }
     }
-    fn.sToast(err.message, 'warn')
+    fn.sToast(err.msg, 'warn')
     return false
   }
 }

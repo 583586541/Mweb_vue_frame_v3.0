@@ -1,0 +1,65 @@
+.FCell {
+  &:extend(.aic);
+  min-height: 1.1rem;
+  font-size: .28rem;
+  line-height: 1.5;
+  border-bottom: 1px solid #dddddd;
+  .key {
+    width: 1.2rem;
+    margin-right: .16rem;
+    color: #666;
+  }
+  .val {
+    flex: 1;
+    color: #333;
+    padding: .17rem 0;
+    &:extend(.aic);
+    .text {
+      flex: 1;
+      &.placeholder {
+        color: #aaa;
+      }
+    }
+    .input {
+      flex: 1;
+      font-size: .28rem;
+      line-height: 1.5;
+      background-color: transparent;
+    }
+    .icon {
+      width: .48rem;
+      height: .48rem;
+      margin-left: .1rem;
+      &:extend(.jccaic);
+      &:after {
+        content: '\200B';
+      }
+      &.more:after {
+        width: .14rem;
+        height: .28rem;
+        background: transparent url('../images/more.png') no-repeat 0 0;
+        background-size: 100% auto;
+      }
+      &.empty:after {
+        width: .36rem;
+        height: .36rem;
+        background: transparent url('../images/empty.png') no-repeat 0 0;
+        background-size: 100% auto;
+      }
+    }
+  }
+  &.Password .icon {
+    &.EC:after {
+      width: .38rem;
+      height: .18rem;
+      background: transparent url('../images/EC.png') no-repeat 0 0;
+      background-size: 100% auto;
+    }
+    &.EO:after {
+      width: .36rem;
+      height: .24rem;
+      background: transparent url('../images/EO.png') no-repeat 0 0;
+      background-size: 100% auto;
+    }
+  }
+}

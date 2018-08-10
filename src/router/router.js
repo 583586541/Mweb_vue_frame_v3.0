@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import demo from '@/views/demo'
 import routerLost from '@/views/routerLost'
+import register from '@/views/register'
 
 Vue.use(Router)
 
@@ -17,6 +18,14 @@ export default new Router({
       component: demo,
       meta: {
         title: '腋毛╮超级长'
+      }
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: register,
+      meta: {
+        title: '注册'
       }
     },
     {

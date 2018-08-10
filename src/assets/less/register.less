@@ -1,0 +1,39 @@
+.register-v {
+  .v-body {
+    background-color: #fff;
+  }
+  form {
+    padding: .24rem .6rem 0;
+  }
+  .FCell {
+    .key {
+      width: .32rem;
+      height: .48rem;
+      margin-right: .3rem;
+      &:extend(.jccaic);
+      &:after {
+        content: '\200B';
+      }
+      &.iphone:after {
+        width: .28rem;
+        height: .36rem;
+        .bg-image('iphone.png');
+      }
+      &.msg-code:after {
+        width: .32rem;
+        height: .32rem;
+        .bg-image('msg_code.png');
+      }
+      &.password:after {
+        width: .3rem;
+        height: .34rem;
+        .bg-image('password.png');
+      }
+      &.referral-code:after {
+        width: .32rem;
+        height: .2rem;
+        .bg-image('referral_code.png');
+      }
+    }
+  }
+}
