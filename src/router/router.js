@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import demo from '@/views/demo'
 import routerLost from '@/views/routerLost'
 import register from '@/views/register'
+import GVRP from '@/views/GVRP'
+import resetPassword from '@/views/resetPassword'
 
 Vue.use(Router)
 
@@ -26,6 +28,22 @@ export default new Router({
       component: register,
       meta: {
         title: '注册'
+      }
+    },
+    {
+      path: '/GVRP',
+      name: 'GVRP',
+      component: GVRP,
+      meta: {
+        title: '牛掰用户注册协议'
+      }
+    },
+    {
+      path: '/resetPassword',
+      name: 'resetPassword',
+      component: resetPassword,
+      meta: {
+        title: '忘记密码'
       }
     },
     {

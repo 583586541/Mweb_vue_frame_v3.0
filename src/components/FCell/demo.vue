@@ -6,7 +6,7 @@
       <div class="FCell">
         <div class="key">身份证</div>
         <div class="val">
-          <input class="input" type="text" placeholder="请输入身份证号码" v-model="IdCard">
+          <input class="input" type="text" placeholder="请输入身份证号码" v-model.trim="IdCard">
           <span class="icon empty" v-show="IdCard" @click="IdCard = ''"></span>
         </div>
       </div>
@@ -22,7 +22,7 @@
       <div class="FCell Password">
         <div class="key password"></div>
         <div class="val">
-          <input class="input" :type="visualization ? 'text' : 'password'" placeholder="请输入6-16位字母和数字" v-model="password">
+          <input class="input" :type="visualization ? 'text' : 'password'" placeholder="请输入6-16位字母和数字" v-model.trim="password">
           <span :class="['icon', visualization ? 'EO' : 'EC']" @click="visualization = !visualization"></span>
         </div>
       </div>
@@ -30,7 +30,7 @@
       <div class="FCell Msg-code">
         <div class="key msg-code"></div>
         <div class="val">
-          <input class="input" type="tel" maxlength="6" placeholder="请输入短信验证码" v-model="msgCode">
+          <input class="input" type="tel" maxlength="6" placeholder="请输入短信验证码" v-model.trim="msgCode">
           <FMsgCode v-on:FClick="getRegisterCode" ref="FMsgCode"></FMsgCode><!-- 详见FMsgCode组件 -->
         </div>
       </div>

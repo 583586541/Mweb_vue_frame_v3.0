@@ -1,5 +1,5 @@
 <template>
-  <div class="register-v v-wrap">
+  <div class="resetPassword-v v-wrap">
     <FHeader :config="FHeaderCfg"></FHeader>
     <div class="v-body" ref="vBody">
       <form>
@@ -14,7 +14,7 @@
           <div class="key msg-code"></div>
           <div class="val">
             <input class="input" type="tel" maxlength="6" placeholder="请输入短信验证码" v-model.trim="msgCode">
-            <FMsgCode v-on:FClick="getRegisterCode" ref="FMsgCode"></FMsgCode>
+            <FMsgCode v-on:FClick="getFindPasswordCode" ref="FMsgCode"></FMsgCode>
           </div>
         </div>
         <div class="FCell Password">
@@ -24,18 +24,8 @@
             <span :class="['icon', visualization ? 'EO' : 'EC']" @click="visualization = !visualization"></span>
           </div>
         </div>
-        <div class="FCell">
-          <div class="key referral-code"></div>
-          <div class="val">
-            <input class="input" disabled type="tel" maxlength="11" placeholder="注册推荐码" v-model.trim="referralCode">
-            <!-- <span class="icon empty" v-show="referralCode" @click="referralCode = ''"></span> -->
-          </div>
-        </div>
-        <div class="GVRP">注册即表示同意
-          <router-link to="/GVRP">《牛掰用户注册协议》</router-link>
-        </div>
-        <div class="do-register">
-          <input type="button" value="注册" @click="register">
+        <div class="do-update-password">
+          <input type="button" value="重置密码" @click="updatePsd">
         </div>
       </form>
     </div>
@@ -49,17 +39,16 @@
   import FHeader from '../components/FHeader/FHeader'
   import FMsgCode from '../components/FMsgCode/FMsgCode'
   export default {
-    name: 'register',
+    name: 'resetPassword',
     data() {
       return {
         FHeaderCfg: {
-          title: '注册'
+          title: '忘记密码'
         },
         iphone: '',
         msgCode: '',
         password: '',
-        visualization: false,
-        referralCode: '13055215093'
+        visualization: false
       }
     },
     created() {
@@ -68,11 +57,11 @@
       if (_this.api.ROOT) {
         _this.iphone = '19959522028'
         // _this.msgCode = '123456'
-        _this.password = 'a123123'
+        _this.password = 'a123456'
       }
     },
     methods: {
-      async getRegisterCode() {
+      async getFindPasswordCode() {
         let _this = this,
           $ = _this.$
 
@@ -80,7 +69,7 @@
           return
         }
         let res = await $.axiosPost({
-          url: _this.api.getRegisterCode,
+          url: _this.api.getFindPasswordCode,
           param: {
             phone: _this.iphone,
             sign: md5(_this.iphone + 'nb').toUpperCase()
@@ -92,7 +81,7 @@
         }
         _this.$refs.FMsgCode.secondReduce()
       },
-      async register() {
+      async updatePsd() {
         let _this = this,
           $ = _this.$
 
@@ -105,27 +94,21 @@
         if (!$.regTest(_this.password, 'password')) {
           return
         }
-        if (!$.regTest(_this.referralCode, 'iphone', '请输入正确的注册推荐码')) {
-          return
-        }
 
         let res = await $.axiosPost({
-          url: _this.api.register,
+          url: _this.api.updatePsd,
           param: {
             phone: _this.iphone,
-            smsCode: _this.msgCode,
-            password: md5(_this.password).toUpperCase(),
-            recomCode: _this.referralCode
+            messageCode: _this.msgCode,
+            newPassWord: md5(_this.password).toUpperCase()
           },
           load: true
         })
         if (!res) {
           return
         }
-        _this.$router.push({
-          'path': '/downApp'
-        })
-      }
+        console.log(res)
+      },
     },
     components: {
       FHeader,

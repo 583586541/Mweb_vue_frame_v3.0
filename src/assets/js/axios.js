@@ -40,7 +40,7 @@ export default {
       fn.sToast(res.data.msg)
       return false
     }
-    return res.data.data
+    return res.data
   },
   // 处理Axios请求错误
   dealAxiosErr(err) {
