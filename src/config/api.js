@@ -1,6 +1,6 @@
 // 接口
 const url = {
-  wechatSign: '/api/oss/wechatSign',
+  wechatSign: '/api/appInfo/wechatSign',
   getRegisterCode: '/api/message/getRegisterCode',
   register: '/api/account/register',
   getFindPasswordCode: '/api/message/getFindPasswordCode',

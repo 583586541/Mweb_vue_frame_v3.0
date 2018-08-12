@@ -7,6 +7,10 @@ import router from './router/router'
 import Navigation from 'vue-navigation'
 Vue.use(Navigation, {router})
 
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
+
 const FastClick = require('fastclick')
 FastClick.attach(document.body)
 

@@ -1,0 +1,54 @@
+.lineDetails-v {
+  .banner {
+    &:extend(.pr);
+    .des {
+      &:extend(.pa);
+      bottom: .34rem;
+      left: .24rem;
+      right: .24rem;
+      z-index: 2;
+      &:extend(.jcsb);
+      font-size: .28rem;
+      line-height: 1.5;
+      color: #fff;
+      span {
+        &:extend(.dib);
+        vertical-align: top;
+      }
+      .departure {
+        &:extend(.pr);
+        padding-right: .14rem;
+        margin-right: .14rem;
+        &:after {
+          content: '\200B';
+          width: 1px;
+          height: .28rem;
+          &:extend(.pa);
+          right: 0;
+          top: .07rem;
+          background-color: #fff;
+        }
+      }
+    }
+    .swiper-index {
+      &:extend(.pa);
+      bottom: .82rem;
+      right: .24rem;
+      z-index: 2;
+      line-height: .4rem;
+      background-color: rgba(0, 0, 0, .5);
+      border-radius: .2rem;
+      color: #fff;
+      font-size: .28rem;
+      padding: 0 .14rem;
+      .icon {
+        &:extend(.dib);
+        vertical-align: top;
+        width: .28rem;
+        height: .24rem;
+        .bg-image('album.png');
+        margin: .08rem 0 0 .06rem;
+      }
+    }
+  }
+}

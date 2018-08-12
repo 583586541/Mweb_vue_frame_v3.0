@@ -4,6 +4,7 @@ import demo from '@/views/demo'
 import routerLost from '@/views/routerLost'
 import register from '@/views/register'
 import GVRP from '@/views/GVRP'
+import lineDetails from '@/views/lineDetails'
 
 Vue.use(Router)
 
@@ -11,7 +12,7 @@ export default new Router({
   routes: [
     { // 重定向到首页
       path: '',
-      redirect: '/demo'
+      redirect: '/register'
     },
     {
       path: '/demo',
@@ -35,6 +36,14 @@ export default new Router({
       component: GVRP,
       meta: {
         title: '牛掰用户注册协议'
+      }
+    },
+    {
+      path: '/lineDetails',
+      name: 'lineDetails',
+      component: lineDetails,
+      meta: {
+        title: '线路详情'
       }
     },
     {

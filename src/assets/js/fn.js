@@ -26,7 +26,7 @@ import api from '../../config/api'
 const regularList = {
   'iphone': {
     rule: /^1[3456789]\d{9}$/,
-    text: '输入正确的手机号'
+    text: '请正确输入您的手机号'
   },
   'password': {
     rule: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/,
@@ -34,23 +34,23 @@ const regularList = {
   },
   'IdCard': {
     rule: /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X|x)$/,
-    text: '输入正确的身份证号码'
+    text: '请正确输入您的身份证号码'
   },
   'email': {
     rule: /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/,
-    text: '输入正确的邮箱地址'
+    text: '请正确输入您的邮箱地址'
   },
   'msgCode': {
     rule: /^\d{6}$/,
-    text: '输入正确的验证码'
+    text: '请正确输入短信验证码'
   },
   'qq': {
     rule: /^\d{5,13}$/,
-    text: '输入正确的QQ号'
+    text: '请正确输入您的QQ号'
   },
   'weixin': {
     rule: /^[a-zA-Z]{1}[-_a-zA-Z0-9]{5,19}$/,
-    text: '输入正确的微信号'
+    text: '请正确输入您的微信号'
   },
   'positiveInteger': { // 正整数（不含0）
     rule: /^[1-9]*[1-9][0-9]*$/,
@@ -62,11 +62,11 @@ const regularList = {
   },
   'plateNumber': {
     rule: /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/,
-    text: '请输入正确的车牌号'
+    text: '请正确输入您的车牌号'
   },
   'ChineseName': {
     rule: /[\u4E00-\u9FA5]/,
-    text: '请输入真实姓名'
+    text: '请正确输入您的真实姓名'
   }
 }
 
