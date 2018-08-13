@@ -11,11 +11,108 @@
         </swiper>
         <div class="des">
           <div class="left-side">
-            <span class="departure">阿富汗出发</span><span class="supplier">龙游天下旅行社</span>
+            <span class="departure">阿富汗出发</span>
+            <span class="supplier">龙游天下旅行社</span>
           </div>
           <div class="right-side number">编号：6546586546</div>
         </div>
-        <div class="swiper-index">{{ swiperIndex + 1 }} / {{ swiperSlides.length }}<em class="icon"></em></div>
+        <div class="swiper-index">{{ swiperIndex + 1 }} / {{ swiperSlides.length }}
+          <em class="icon"></em>
+        </div>
+      </div>
+      <div class="synopsis">
+        <h2>海南三亚6日5晚跟团游海南三亚6日5晚跟团游海南三亚6日5三亚</h2>
+        <div class="price">
+          <em>&yen;</em>5668
+          <strong>起/人</strong>
+        </div>
+        <ul class="tips clearfix">
+          <li>海滨海岛</li>
+          <li>沙滩</li>
+          <li>海滨海岛</li>
+          <li>沙滩</li>
+          <li>海滨海岛</li>
+          <li>沙滩</li>
+          <li>海滨海岛</li>
+          <li>沙滩</li>
+          <li>海滨海岛</li>
+          <li>沙滩</li>
+        </ul>
+      </div>
+      <div class="discount">
+        <div class="ticket cell">
+          <div class="key">领券</div>
+          <ul class="val clearfix">
+            <li>
+              <div class="rebate">&yen;200</div>
+              <div class="condition">满50000元可用</div>
+            </li>
+            <li>
+              <div class="rebate">&yen;200</div>
+              <div class="condition">满50000元可用</div>
+            </li>
+            <li>
+              <div class="rebate">&yen;200</div>
+              <div class="condition">满50000元可用</div>
+            </li>
+          </ul>
+          <div class="more">更多
+            <em class="icon"></em>
+          </div>
+        </div>
+        <div class="activity cell">
+          <div class="key">优惠</div>
+          <div class="val clearfix">
+            <em class="state">已选</em>满2000元，立减100元</div>
+          <div class="more">更多
+            <em class="icon"></em>
+          </div>
+        </div>
+        <ul class="tips clearfix">
+          <li>
+            <em class="icon"></em>特色标签
+          </li>
+          <li>
+            <em class="icon"></em>特色标签
+          </li>
+        </ul>
+      </div>
+      <div class="evaluate">
+        <div class="fraction">
+          <div class="score">4.9
+            <strong>/5</strong>
+          </div>
+          <ul class="clearfix">
+            <li>
+              <div class="key">导游讲解</div>
+              <div class="val">
+                <FProportion :config=".8"></FProportion>
+                <span>4</span>
+              </div>
+            </li>
+            <li>
+              <div class="key">行程安排</div>
+              <div class="val">
+                <FProportion :config="0.8"></FProportion>
+                <span>4</span>
+              </div>
+            </li>
+            <li>
+              <div class="key">描述相符</div>
+              <div class="val">
+                <FProportion :config="0.98"></FProportion>
+                <span>4.9</span>
+              </div>
+            </li>
+            <li>
+              <div class="key">好评率</div>
+              <div class="val">
+                <FProportion :config="0.6"></FProportion>
+                <span>60%</span>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -23,6 +120,7 @@
 
 <script>
   import FHeader from '../components/FHeader/FHeader'
+  import FProportion from '../components/FProportion/FProportion'
   export default {
     name: 'lineDetails',
     data() {
@@ -77,7 +175,8 @@
       }
     },
     components: {
-      FHeader
+      FHeader,
+      FProportion
     }
   }
 </script>

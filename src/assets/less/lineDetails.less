@@ -1,4 +1,7 @@
 .lineDetails-v {
+  .v-body {
+    background-color: #f3f4f5;
+  }
   .banner {
     &:extend(.pr);
     .des {
@@ -48,6 +51,189 @@
         height: .24rem;
         .bg-image('album.png');
         margin: .08rem 0 0 .06rem;
+      }
+    }
+  }
+  .synopsis {
+    &:extend(.pr);
+    z-index: 2;
+    background-color: #fff;
+    margin: -0.28rem 0 .2rem;
+    border-radius: .28rem .28rem 0 0;
+    padding: .26rem .24rem;
+    h2 {
+      font-size: .4rem;
+      color: #202020;
+      line-height: 1.5;
+      font-weight: bold;
+    }
+    .price {
+      font-size: .4rem;
+      color: #ff3f12;
+      line-height: 1;
+      margin: .16rem 0 .28rem;
+      em,
+      strong {
+        &:extend(.dib);
+        vertical-align: bottom;
+        font-size: .24rem;
+        line-height: 1.4;
+      }
+    }
+    .tips {
+      line-height: .28rem;
+      font-size: .2rem;
+      color: @buttonColor;
+      li {
+        &:extend(.fl);
+        margin: 0 .1rem .1rem 0;
+        border: 1px solid @buttonColor;
+        padding: 0 .1rem;
+        border-radius: .03rem;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+  .discount {
+    background-color: #fff;
+    margin-bottom: .2rem;
+    padding: 0 .24rem;
+    .cell {
+      &:extend(.jccaic);
+      color: #666666;
+      font-size: .32rem;
+      line-height: 1.5;
+      border-bottom: 1px solid #ddd;
+      .key {
+        width: .86rem;
+      }
+      .val {
+        flex: 1;
+      }
+      .more {
+        color: #999;
+        font-size: .28rem;
+        padding-left: .16rem;
+        .icon {
+          &:extend(.dib);
+          vertical-align: top;
+          margin: .08rem 0 0 .12rem;
+          width: .14rem;
+          height: .26rem;
+          .bg-image('more_right.png');
+        }
+      }
+    }
+    .ticket {
+      padding: .2rem 0;
+      li {
+        width: 1.5rem;
+        height: .78rem;
+        margin-right: .12rem;
+        &:extend(.fl);
+        .bg-image('ticket.png');
+        text-align: center;
+        color: #fff;
+        .rebate {
+          font-size: .36rem;
+          line-height: .48rem;
+        }
+        .condition {
+          font-size: .2rem;
+          line-height: .3rem;
+        }
+        &:nth-child(n+4) {
+          &:extend(.dn);
+        }
+      }
+    }
+    .activity {
+      line-height: 1rem;
+      .val .state {
+        &:extend(.dib);
+        vertical-align: top;
+        line-height: .28rem;
+        border: 1px solid #ff3f12;
+        color: #ff3f12;
+        font-size: .2rem;
+        width: .48rem;
+        text-align: center;
+        margin: .35rem .12rem 0 0;
+        border-radius: .03rem;
+      }
+      .more {
+        font-size: .28rem;
+        .icon {
+          margin-top: .37rem;
+        }
+      }
+    }
+    .tips {
+      li {
+        &:extend(.fl);
+        margin-right: .24rem;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+      line-height: 1rem;
+      font-size: .28rem;
+      color: #202020;
+      em.icon {
+        &:extend(.dib);
+        vertical-align: top;
+        width: .24rem;
+        height: .24rem;
+        .bg-image('radio_on.png');
+        margin: .38rem .12rem 0 0;
+      }
+    }
+  }
+  .evaluate {
+    background-color: #fff;
+    margin-bottom: .2rem;
+    padding: .1rem .24rem 0;
+    .fraction {
+      .score {
+        font-size: .4rem;
+        line-height: .8rem;
+        color: #202020;
+        font-weight: bold;
+        strong {
+          &:extend(.dib);
+          vertical-align: bottom;
+          font-size: .24rem;
+          line-height: 1;
+          margin-bottom: .22rem;
+          font-weight: normal;
+        }
+      }
+      ul {
+        line-height: .42rem;
+        color: #999999;
+        font-size: .24rem;
+        margin-bottom: .2rem;
+        padding-bottom: 1px solid #ddd;
+        li {
+          &:extend(.fl);
+          width: 50%;
+          &:extend(.df);
+        }
+        .key {
+          width: 4em;
+        }
+        .val {
+          &:extend(.df);
+          margin-left: .12rem;
+          .FProportion {
+            margin: .16rem .12rem 0 0;
+          }
+          span {
+            color: #202020;
+          }
+        }
       }
     }
   }
