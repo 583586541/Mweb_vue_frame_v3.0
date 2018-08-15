@@ -310,7 +310,7 @@ const fn = {
       key = api.STORAGEPREFIX + key
       let valType = typeof (val)
       if (val !== null) {
-        var valConstructor = val.constructor
+        let valConstructor = val.constructor
       }
       if (valType === 'string' || valType === 'number' || valType === 'boolean') {
         if (valConstructor === String) {
@@ -442,6 +442,46 @@ const fn = {
     let isappinstalled = href[1]
     href.splice(1, 1, isappinstalled.slice(isappinstalled.indexOf('#')))
     window.location.href = href.join('')
+  },
+  scrollYAxis(data) {
+    window.requestAnimFrame = (function () {
+      return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback) {
+        window.setTimeout(callback, 1000 / 60)
+      }
+    })()
+    let scrollY = window.scrollY || document.documentElement.scrollTop,
+      target = data.target || 0,
+      speed = data.speed || 2000,
+      easing = data.type || 'easeOutSine',
+      currentTime = 0
+    let time = Math.max(.1, Math.min(Math.abs(scrollY - target) / speed, .8))
+    let easingEquations = {
+      easeOutSine: function (pos) {
+        return Math.sin(pos * (Math.PI / 2))
+      },
+      easeInOutSine: function (pos) {
+        return (-0.5 * (Math.cos(Math.PI * pos) - 1))
+      },
+      easeInOutQuint: function (pos) {
+        if ((pos /= 0.5) < 1) {
+          return 0.5 * Math.pow(pos, 5)
+        }
+        return 0.5 * (Math.pow((pos - 2), 5) + 2)
+      }
+    }
+    function tick() {
+      currentTime += 1 / 60
+      let p = currentTime / time,
+        t = easingEquations[easing](p)
+
+      if (p < 1) {
+        requestAnimFrame(tick)
+        data.ele.scrollTo(0, scrollY + ((target - scrollY) * t))
+      } else {
+        data.ele.scrollTo(0, target)
+      }
+    }
+    tick()
   }
 }
 
