@@ -449,7 +449,7 @@ const fn = {
         window.setTimeout(callback, 1000 / 60)
       }
     })()
-    let scrollY = window.scrollY || document.documentElement.scrollTop,
+    let scrollY = window.scrollY || document.documentElement.scrollTop || data.ele.scrollTop,
       target = data.target || 0,
       speed = data.speed || 2000,
       easing = data.type || 'easeOutSine',

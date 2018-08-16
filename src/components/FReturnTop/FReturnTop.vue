@@ -8,6 +8,7 @@
     data() {
       return {
         ele: {},
+        finished: true,
         state: false,
         limit: 999
       }
@@ -23,14 +24,28 @@
         
         _this.ele = _this.cfg
         _this.ele.addEventListener('scroll', function() {
-          _this.state = _this.ele.scrollTop > _this.limit
+          let eleScrollTop = _this.ele.scrollTop
+          if (_this.finished) {
+            _this.state = eleScrollTop > _this.limit
+          }
+          if (!eleScrollTop) {
+            _this.finished = true
+          }
         })
       },
       execute() {
-        if (this.$.isEmptyObj(this.ele)) {
+        let _this = this
+        if (_this.$.isEmptyObj(_this.ele)) {
           return
         }
-        this.ele.scrollTo(0, 0)
+        _this.finished = false
+        _this.state = false
+        
+        _this.$.scrollYAxis({
+          ele: _this.ele,
+          target: 0,
+          speed: 20000
+        })
       }
     },
     watch: {
