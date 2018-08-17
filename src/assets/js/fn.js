@@ -476,9 +476,9 @@ const fn = {
 
       if (p < 1) {
         requestAnimFrame(tick)
-        data.ele.scrollTo(0, scrollY + ((target - scrollY) * t))
+        data.ele.scrollTop = scrollY + ((target - scrollY) * t)
       } else {
-        data.ele.scrollTo(0, target)
+        data.ele.scrollTop = target
       }
     }
     tick()
