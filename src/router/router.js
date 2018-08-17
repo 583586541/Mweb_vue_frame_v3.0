@@ -5,6 +5,13 @@ import routerLost from '@/views/routerLost'
 import register from '@/views/register'
 import GVRP from '@/views/GVRP'
 import lineDetails from '@/views/lineDetails'
+import album from '@/views/album'
+import coupon from '@/views/coupon'
+import comment from '@/views/comment'
+import doubt from '@/views/doubt'
+import departure from '@/views/departure'
+import schedule from '@/views/schedule'
+import travels from '@/views/travels'
 
 Vue.use(Router)
 
@@ -44,6 +51,62 @@ export default new Router({
       component: lineDetails,
       meta: {
         title: '线路详情'
+      }
+    },
+    {
+      path: '/album',
+      name: 'album',
+      component: album,
+      meta: {
+        title: '相册'
+      }
+    },
+    {
+      path: '/coupon',
+      name: 'coupon',
+      component: coupon,
+      meta: {
+        title: '优惠券'
+      }
+    },
+    {
+      path: '/comment',
+      name: 'comment',
+      component: comment,
+      meta: {
+        title: '点评'
+      }
+    },
+    {
+      path: '/doubt',
+      name: 'doubt',
+      component: doubt,
+      meta: {
+        title: '提问'
+      }
+    },
+    {
+      path: '/departure',
+      name: 'departure',
+      component: departure,
+      meta: {
+        title: '更多出发地'
+      }
+    },
+    {
+      path: '/schedule',
+      name: 'schedule',
+      component: schedule,
+      meta: {
+        title: '更多班期'
+      }
+    },
+    {
+      path: '/travels',
+      name: 'travels',
+      component: travels,
+      meta: {
+        title: '相关游记'
       }
     },
     {

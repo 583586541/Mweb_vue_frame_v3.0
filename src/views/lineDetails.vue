@@ -39,7 +39,7 @@
           <li>沙滩</li>
         </ul>
       </div>
-      <div class="discount" v-if="true">
+      <div class="discount">
         <div class="ticket cell">
           <div class="key">领券</div>
           <ul class="val clearfix">
@@ -56,7 +56,7 @@
               <div class="condition">满50000元可用</div>
             </li>
           </ul>
-          <div class="more">更多
+          <div class="more" @click="$router.push('/coupon')">更多
             <em class="icon"></em>
           </div>
         </div>
@@ -77,7 +77,7 @@
           </li>
         </ul>
       </div>
-      <div class="evaluate" v-if="true">
+      <div class="evaluate">
         <div class="fraction">
           <div class="score">4.9
             <strong>/5</strong>
@@ -128,7 +128,7 @@
           </div>
         </div>
       </div>
-      <div class="doubt" v-if="true">
+      <div class="doubt">
         <div class="column-name">大家都在问</div>
         <ul>
           <li>
@@ -148,11 +148,11 @@
           </router-link>
         </div>
       </div>
-      <div class="schedule" v-if="true">
+      <div class="schedule">
         <div class="place">
           <span class="area">
             <em class="icon"></em>广州出发</span>
-          <router-link class="more" to="/moreArea">更多出发地
+          <router-link class="more" to="/departure">更多出发地
             <em class="icon"></em>
           </router-link>
         </div>
@@ -190,7 +190,7 @@
             </ul>
           </div>
           <div class="more-schedule">
-            <router-link to="/moreSchedule">更多班期</router-link>
+            <router-link to="/schedule">更多班期</router-link>
           </div>
         </div>
 
@@ -199,7 +199,7 @@
         <li :class="{ 'on': index == tabNavsActiveIndex }" v-for="(list, index) in tabNavsList" v-bind:key="list.id" @click="jumpToAnchor(index)">{{ list }}</li>
       </ul>
       <div class="tab-navs-placehoder" v-if="suspension"></div>
-      <div class="pdt-feature" ref="pdtFeature" v-if="true">
+      <div class="pdt-feature" ref="pdtFeature">
         <div class="nominate">
           <div class="tit">产品经理推荐</div>
           <ul>
@@ -222,11 +222,11 @@
           <div class="html" v-html="p"></div>
         </div>
       </div>
-      <div class="pdt-trip" ref="pdtTrip" v-if="true">
+      <div class="pdt-trip" ref="pdtTrip">
         <div class="tit">行程安排</div>
         <div class="html" v-html="p"></div>
       </div>
-      <div class="pdt-cost" ref="pdtCost" v-if="true">
+      <div class="pdt-cost" ref="pdtCost">
         <div class="tit">费用说明</div>
         <div class="column-name">费用包含</div>
         <ul>
@@ -259,7 +259,7 @@
           </li>
         </ul>
       </div>
-      <ul class="pdt-book-notice" ref="pdtBookNotice" v-if="true">
+      <ul class="pdt-book-notice" ref="pdtBookNotice">
         <li>
           <router-link to="/a">
             <span>签证须知</span>
@@ -279,9 +279,9 @@
           </router-link>
         </li>
       </ul>
-      <div class="travels" ref="travels" v-if="true">
+      <div class="travels" ref="travels">
         <div class="column-name">相关游记</div>
-        <dl>
+        <dl @click="$router.push('/travels')">
           <dt>
             <img src="http://pic1.win4000.com/mobile/5/57eddcba0f0af.jpg" alt="">
           </dt>
@@ -293,7 +293,7 @@
             <span class="more"></span>
           </dd>
         </dl>
-        <dl>
+        <dl @click="$router.push('/travels')">
           <dt>
             <img src="http://pic1.win4000.com/mobile/5/57eddcba0f0af.jpg" alt="">
           </dt>
@@ -412,7 +412,9 @@
         this.swiperIndex = this.swiper.activeIndex
       },
       slideClicked() {
-        console.log('你点击了swpier')
+        this.$router.push({
+          path: '/album'
+        })
       },
       addScrollEvent() {
         let _this = this,
