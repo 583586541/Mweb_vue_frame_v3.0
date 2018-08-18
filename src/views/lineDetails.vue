@@ -7,7 +7,6 @@
           <swiper-slide v-for="slide in swiperSlides" v-bind:key="slide.id">
             <img :src="slide">
           </swiper-slide>
-          <!-- <div class="swiper-pagination" slot="pagination"></div> -->
         </swiper>
         <div class="des">
           <div class="left-side">
@@ -16,7 +15,7 @@
           </div>
           <div class="right-side number">编号：6546586546</div>
         </div>
-        <div class="swiper-index">{{ swiperIndex + 1 }} / {{ swiperSlides.length }}
+        <div class="swiper-index" @click="slideClicked">{{ swiperIndex + 1 }} / {{ swiperSlides.length }}
           <em class="icon"></em>
         </div>
       </div>
@@ -64,7 +63,7 @@
           <div class="key">优惠</div>
           <div class="val clearfix">
             <em class="state">已选</em>满2000元，立减100元</div>
-          <div class="more">更多
+          <div class="more" @click="FSelectCfg.state = true">更多
             <em class="icon"></em>
           </div>
         </div>
@@ -336,6 +335,7 @@
       <input type="button" value="开始预订">
     </footer>
     <FReturnTop :config="FReturnTopCfg"></FReturnTop>
+    <FSelect :config="FSelectCfg" v-on:close="FSelectCfg.state = false" v-on:res="resFSelect"></FSelect>
   </div>
 </template>
 
@@ -343,6 +343,7 @@
   import FHeader from '../components/FHeader/FHeader'
   import FProportion from '../components/FProportion/FProportion'
   import FReturnTop from '../components/FReturnTop/FReturnTop'
+  import FSelect from '../components/FSelect/FSelect'
   export default {
     name: 'lineDetails',
     data() {
@@ -351,6 +352,46 @@
           title: '线路详情'
         },
         FReturnTopCfg: {},
+
+        FSelectCfg: {
+          title: '请选择',
+          state: false,
+          items: [
+            {
+              name: '测试1',
+              code: 1
+            },
+            {
+              name: '测试2',
+              code: 2
+            },
+            {
+              name: '测试3',
+              code: 3
+            },
+            {
+              name: '测试4',
+              code: 4
+            },
+            {
+              name: '测试5',
+              code: 5
+            },
+            {
+              name: '测试6',
+              code: 6
+            },
+            {
+              name: '测试7',
+              code: 7
+            },
+            {
+              name: '测试8',
+              code: 8
+            },
+          ]
+        },
+
         swiperOption: {
           pagination: {
             el: '.swiper-pagination'
@@ -482,12 +523,21 @@
         }
         refs.vBody.scrollTop = target + 1
         _this.tabNavsActiveIndex = i
+      },
+      resFSelect(item) {
+        let _this = this
+        _this.$set(_this.FSelectCfg, 'checked', item)
+
+        _this.$nextTick(function () {
+          _this.$set(_this.FSelectCfg, 'state', false)
+        })
       }
     },
     components: {
       FHeader,
       FProportion,
-      FReturnTop
+      FReturnTop,
+      FSelect
     }
   }
 </script>

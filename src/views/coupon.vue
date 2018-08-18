@@ -1,7 +1,7 @@
 <template>
   <div class="coupon-v v-wrap">
     <FHeader :config="FHeaderCfg"></FHeader>
-    <div class="v-body" ref="vBody"></div>
+    <div class="v-body" ref="vBody">正在开发中...</div>
   </div>
 </template>
 
