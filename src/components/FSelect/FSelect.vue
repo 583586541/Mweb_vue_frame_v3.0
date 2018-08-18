@@ -3,16 +3,15 @@
     <section class="FSelect" v-if="config.state">
       <div class="FSelect-mask" @click="close"></div>
       <div class="FSelect-wrap">
-        <div class="FSelect-header">
-          <span class="title">{{ config.title }}</span>
-          <span class="close" @click="close"></span>
-        </div>
         <div class="FSelect-body">
           <ul ref="items">
             <li :class="{ 'checked': config.checked && item.code == config.checked.code }" v-for="item in config.items" :key="item.id"
-              @click="res(item)" ref="item">{{ item.name }}</li>
+              @click="res(item)" ref="item">
+              <div>{{ item.name }}</div>  
+            </li>
           </ul>
         </div>
+        <div class="FSelect-close" @click="close">取消</div>
       </div>
     </section>
   </transition>
@@ -55,7 +54,7 @@
         function slide(i) {
           let refs = _this.$refs
 
-          refs.items.scrollTop = refs.item[i].offsetTop - refs.item[0].clientHeight * 3
+          refs.items.scrollTop = refs.item[i].offsetTop - (refs.items.clientHeight - refs.item[i].clientHeight) / 2
         }
       }
     },
