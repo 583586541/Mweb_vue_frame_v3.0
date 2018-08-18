@@ -1,0 +1,42 @@
+.imgZoom-v {
+  .pagination {
+    &:extend(.pa);
+    top: .24rem;
+    left: 0;
+    right: 0;
+    color: #fff;
+    font-size: .28rem;
+    text-align: center;
+    // background-color: rgba(0, 0, 0, .5);
+    z-index: 5;
+  }
+  .FSwiper-wrap {
+    &:extend(.pa);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    &:extend(.aic);
+    .FSwiper {
+      height: 4.2rem;
+      img {
+        height: 100%;
+      }
+    }
+  }
+  .describe {
+    &:extend(.pa);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2.44rem;
+    font-size: .32rem;
+    line-height: .46rem;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    padding: .28rem .24rem .28rem;
+    z-index: 5;
+  }
+}

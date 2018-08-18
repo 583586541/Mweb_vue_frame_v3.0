@@ -12,6 +12,7 @@ import doubt from '@/views/doubt'
 import departure from '@/views/departure'
 import schedule from '@/views/schedule'
 import travels from '@/views/travels'
+import imgZoom from '@/views/imgZoom'
 
 Vue.use(Router)
 
@@ -59,6 +60,14 @@ export default new Router({
       component: album,
       meta: {
         title: '相册'
+      }
+    },
+    {
+      path: '/imgZoom',
+      name: 'imgZoom',
+      component: imgZoom,
+      meta: {
+        title: '图片详情'
       }
     },
     {
