@@ -16,6 +16,9 @@
         }
       }
     },
+    created() {
+      
+    },
     components: {
       FHeader
     }

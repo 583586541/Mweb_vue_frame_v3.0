@@ -287,7 +287,10 @@
           <dd>
             <div class="title">这里写游记的标题这里写游记的标题这里写游记的标题这里写游记的标题这里写游记的标题</div>
             <div class="interact">
-              <span class="page-view"><em class="icon"></em>839</span><span class="msg"><em class="icon"></em>220</span>
+              <span class="page-view">
+                <em class="icon"></em>839</span>
+              <span class="msg">
+                <em class="icon"></em>220</span>
             </div>
             <span class="more"></span>
           </dd>
@@ -299,7 +302,10 @@
           <dd>
             <div class="title">这里写游记的标题这里写游记的标题这里写游记的标题这里写游记的标题这里写游记的标题</div>
             <div class="interact">
-              <span class="page-view"><em class="icon"></em>839</span><span class="msg"><em class="icon"></em>220</span>
+              <span class="page-view">
+                <em class="icon"></em>839</span>
+              <span class="msg">
+                <em class="icon"></em>220</span>
             </div>
             <span class="more"></span>
           </dd>
@@ -311,12 +317,18 @@
           <li>
             <img src="https://ss0.bdstatic.com/-0U0bnSm1A5BphGlnYG/tam-ogel/dfb94e0cf16e81f68a5c48f4dc55dbae_259_146.jpg" alt="">
             <div class="title">的说法萨法撒仿盛大飞的说的说法萨法撒仿的说法萨法撒仿盛大飞的说法速度方式盛大飞的说法速度方式法速度方式</div>
-            <div class="price">&yen;<em>8888</em><strong>起/人</strong></div>
+            <div class="price">&yen;
+              <em>8888</em>
+              <strong>起/人</strong>
+            </div>
           </li>
           <li>
             <img src="https://ss0.bdstatic.com/-0U0bnSm1A5BphGlnYG/tam-ogel/dfb94e0cf16e81f68a5c48f4dc55dbae_259_146.jpg" alt="">
             <div class="title">的说法萨法撒仿盛大飞的说的说法萨法撒仿的说法萨法撒仿盛大飞的说法速度方式盛大飞的说法速度方式法速度方式</div>
-            <div class="price">&yen;<em>8888</em><strong>起/人</strong></div>
+            <div class="price">&yen;
+              <em>8888</em>
+              <strong>起/人</strong>
+            </div>
           </li>
         </ul>
       </div>
@@ -355,40 +367,7 @@
 
         FSelectCfg: {
           state: false,
-          items: [
-            {
-              name: '测试1',
-              code: 1
-            },
-            {
-              name: '测试2',
-              code: 2
-            },
-            {
-              name: '测试3',
-              code: 3
-            },
-            {
-              name: '测试4',
-              code: 4
-            },
-            {
-              name: '测试5测试5测试5测试5测试5测试5测试5测试5测试5测试5测试5测试5测试5测试5',
-              code: 5
-            },
-            {
-              name: '测试6',
-              code: 6
-            },
-            {
-              name: '测试7',
-              code: 7
-            },
-            {
-              name: '测试8',
-              code: 8
-            },
-          ]
+          items: []
         },
 
         swiperOption: {
@@ -436,6 +415,39 @@
           'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471709146356773.jpg',
           'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471716496161432.jpg',
           'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471723900535567.jpg'
+        ]
+        _this.FSelectCfg.items = [{
+            name: '测试1',
+            code: 1
+          },
+          {
+            name: '测试2',
+            code: 2
+          },
+          {
+            name: '测试3',
+            code: 3
+          },
+          {
+            name: '测试4',
+            code: 4
+          },
+          {
+            name: '测试5测试5测试5测试5测试5测试5测试5测试5测试5测试5测试5测试5测试5测试5',
+            code: 5
+          },
+          {
+            name: '测试6',
+            code: 6
+          },
+          {
+            name: '测试7',
+            code: 7
+          },
+          {
+            name: '测试8',
+            code: 8
+          },
         ]
         _this.$nextTick(function () {
           _this.swiper.autoplay.start()
