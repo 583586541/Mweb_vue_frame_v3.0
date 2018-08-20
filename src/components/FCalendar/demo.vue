@@ -1,6 +1,5 @@
 <template>
-  <div class="schedule-v v-wrap">
-    <FHeader :config="FHeaderCfg"></FHeader>
+  <div class="demo-v v-wrap">
     <div class="v-body" ref="vBody">
       <div @click="FCalendarCfg.state = true">修改日期:{{ FCalendarCfg.value }}</div>
     </div>
@@ -9,24 +8,18 @@
 </template>
 
 <script>
-  import FHeader from '../components/FHeader/FHeader'
   import FCalendar from '../components/FCalendar/FCalendar'
   export default {
     name: 'schedule',
     data() {
       return {
-        FHeaderCfg: {
-          title: '更多班期'
-        },
         FCalendarCfg: {
           state: false,
           value: '2018-08-06',
-          // start: '2018-08-05',
-          // end: '2018-08-21'
+          start: '1918-08-05',
+          end: '2018-08-21'
         }
       }
-    },
-    created() {
     },
     methods: {
       resFCalendar(res) {
@@ -34,7 +27,6 @@
       }
     },
     components: {
-      FHeader,
       FCalendar
     }
   }

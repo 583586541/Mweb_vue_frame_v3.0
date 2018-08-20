@@ -482,7 +482,8 @@ const fn = {
       }
     }
     tick()
-  }
+  },
+  // 获取浏览器的内核
 }
 
 export default fn
