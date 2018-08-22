@@ -1,0 +1,127 @@
+.FKalendar {
+  padding-top: .4rem;
+  background-color: #fff;
+  .FKalendar-tpl {
+    &:extend(.jcsb);
+    padding: 0 .4rem;
+    line-height: .7rem;
+    .details {
+      &:extend(.aic);
+      font-size: .5rem;
+      color: #202020;
+      font-weight: bold;
+    }
+    .ctl-btn {
+      &:extend(.aic);
+      justify-content: space-between;
+      width: 1.5rem;
+      span {
+        width: .44rem;
+        height: .44rem;
+        background-color: #f00;
+        &.prev {
+          background: transparent url('../images/prev_month.png') 0 0 no-repeat;
+          background-size: 100% auto;
+        }
+        &.next {
+          background: transparent url('../images/next_month.png') 0 0 no-repeat;
+          background-size: 100% auto;
+        }
+      }
+    }
+  }
+  .FKalendar-week-items {
+    &:extend(.df);
+    font-size: .2rem;
+    color: #666666;
+    line-height: 1.04rem;
+    text-align: center;
+    li {
+      flex: 1;
+      &:nth-child(1),
+      &:nth-child(7) {
+        color: #fe5252;
+      }
+    }
+  }
+  .FKalendar-date-items {
+    text-align: center;
+    font-size: .28rem;
+    line-height: 1;
+    padding: 0 .3%;
+    li {
+      &:extend(.fl);
+      &:extend(.pr);
+      width: 14.2%;
+      height: 1rem;
+      margin: .1rem 0;
+      color: #202020;
+      border: 1px solid #fff;
+      box-sizing: border-box;
+      &:nth-child(7n+1) {
+        .tip {
+          left: 0;
+          transform: translateX(0%);
+          &:after {
+            left: 32%;
+          }
+        }
+      }
+      &:nth-child(7n+0) {
+        margin-right: 0;
+        .tip {
+          left: 0;
+          transform: translateX(-32%);
+          &:after {
+            left: 64%;
+          }
+        }
+      }
+      .date {
+        &:extend(.pa);
+        width: 100%;
+        line-height: 1rem;
+        z-index: 10;
+      }
+      .tip {
+        &:extend(.pa);
+        top: -0.5rem;
+        left: 50%;
+        width: 8em;
+        background-color: rgba(0, 0, 0, .7);
+        color: #fff;
+        font-size: .2rem;
+        line-height: 2;
+        transform: translateX(-50%);
+        border-radius: .05rem;
+        &:after {
+          &:extend(.pa);
+          left: 50%;
+          bottom: -0.19rem;
+          content: '\200B';
+          width: 0;
+          height: 0;
+          border: .1rem solid transparent;
+          border-top: .1rem solid rgba(0, 0, 0, .7);
+          transform: translateX(-50%);
+        }
+      }
+      &.s-checked,
+      &.e-checked {
+        background-color: #03b68f;
+        border-radius: .05rem;
+        .date {
+          color: #fff;
+        }
+      }
+      &.period {
+        background-color: #e3faf5;
+      }
+      &.disabled {
+        .date {
+          color: #999999;
+        }
+      }
+    }
+  }
+}

@@ -1,24 +1,20 @@
 <template>
-  <div class="schedule-v v-wrap">
-    <FHeader :config="FHeaderCfg"></FHeader>
+  <div class="demo-v v-wrap">
     <div class="v-body" ref="vBody">
-      开始时间：{{ FKalendarCfg.sValue }}
-      结束时间：{{ FKalendarCfg.eValue }}
+      <div>开始时间：{{ FKalendarCfg.sValue }}</div>
+      <div v-if="!FKalendarCfg.onceClick">结束时间：{{ FKalendarCfg.eValue }}</div>
+      <div @click="FKalendarCfg.onceClick = !FKalendarCfg.onceClick">点击切换模式     当前: {{ FKalendarCfg.onceClick ? '单选' : '两选' }}</div>
       <FKalendar :config="FKalendarCfg" v-on:res="resFKalendar"></FKalendar>
     </div>
   </div>
 </template>
 
 <script>
-  import FHeader from '../components/FHeader/FHeader'
   import FKalendar from '../components/FKalendar/FKalendar'
   export default {
-    name: 'schedule',
+    name: 'demo',
     data() {
       return {
-        FHeaderCfg: {
-          title: '选择日期和人数'
-        },
         FKalendarCfg: {
           onceClick: false,
           sValue: this.$.getThatDay(1),
@@ -37,7 +33,6 @@
       }
     },
     components: {
-      FHeader,
       FKalendar
     }
   }

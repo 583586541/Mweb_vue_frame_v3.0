@@ -107,7 +107,7 @@ export default new Router({
       name: 'schedule',
       component: schedule,
       meta: {
-        title: '更多班期'
+        title: '选择日期和人数'
       }
     },
     {

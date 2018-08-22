@@ -15,9 +15,9 @@
       return {
         FCalendarCfg: {
           state: false,
-          value: '2018-08-06',
-          start: '1918-08-05',
-          end: '2018-08-21'
+          value: this.$.getThatDay(1),
+          start: this.$.getThatDay(1),
+          end: this.$.getThatDay(15)
         }
       }
     },

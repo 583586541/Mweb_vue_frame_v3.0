@@ -26,7 +26,7 @@
             <ul class="FCalendar-date-list clearfix">
               <li :class="{
               'disabled': !item.usable,
-              'checked': config.value == item.time
+              'checked': item.usable && config.value == item.time
             }" v-for="item in items" v-bind:key="item.id">
                 <div class="date" @click="res(item)">{{ item.date }}</div>
               </li>
