@@ -2,43 +2,24 @@
   <div class="schedule-v v-wrap">
     <FHeader :config="FHeaderCfg"></FHeader>
     <div class="v-body" ref="vBody">
-      开始时间：{{ FKalendarCfg.sValue }}
-      结束时间：{{ FKalendarCfg.eValue }}
-      <FKalendar :config="FKalendarCfg" v-on:res="resFKalendar"></FKalendar>
+      9月20号之后开放
     </div>
   </div>
 </template>
 
 <script>
   import FHeader from '../components/FHeader/FHeader'
-  import FKalendar from '../components/FKalendar/FKalendar'
   export default {
     name: 'schedule',
     data() {
       return {
         FHeaderCfg: {
           title: '选择日期和人数'
-        },
-        FKalendarCfg: {
-          onceClick: false,
-          sValue: this.$.getThatDay(1),
-          eValue: this.$.getThatDay(2),
-          start: this.$.getThatDay(1),
-          end: this.$.getThatDay(45)
         }
       }
     },
-    methods: {
-      resFKalendar(sTime, eTime) {
-        Object.assign(this.FKalendarCfg, {
-          sValue: sTime,
-          eValue: eTime
-        })
-      }
-    },
     components: {
-      FHeader,
-      FKalendar
+      FHeader
     }
   }
 </script>
