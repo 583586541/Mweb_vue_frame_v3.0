@@ -7,5 +7,12 @@ module.exports = {
     pathRewrite: {
       '^/mf': ''
     }
-  }
+  },
+  '/dev': {
+    target: 'http://yfqc-app.test.atenops.com',
+    changeOrigin: true,
+    pathRewrite: {
+      '^/dev': ''
+    }
+  },
 }

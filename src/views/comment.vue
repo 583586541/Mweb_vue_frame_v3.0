@@ -1,7 +1,9 @@
 <template>
   <div class="comment-v v-wrap">
     <FHeader :config="FHeaderCfg"></FHeader>
-    <div class="v-body" ref="vBody"></div>
+    <div class="v-body" ref="vBody">
+      9月20号之后开放
+    </div>
   </div>
 </template>
 

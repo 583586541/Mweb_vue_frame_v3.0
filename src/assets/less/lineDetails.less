@@ -744,6 +744,9 @@
       &>div {
         flex: 1;
       }
+      a {
+        color: #626566;
+      }
       .kf .icon {
         &:extend(.db);
         width: .46rem;
@@ -758,6 +761,28 @@
         margin: 0 auto .12rem;
         .bg-image('collect.png');
       }
+    }
+  }
+  .service-mod {
+    ul {
+      height: 2rem;
+    }
+    a {
+      display: block;
+      color: #202020;
+    }
+    em {
+      &:extend(.dib);
+      vertical-align: top;
+      width: .32rem;
+      height: .32rem;
+      margin: .08rem .1rem 0 0;
+    }
+    .telephone em {
+      .bg-image('telephone.png');
+    }
+    .artificial em {
+      .bg-image('artificial.png');
     }
   }
 }

@@ -97,6 +97,9 @@ const fn = {
   isAppClient() {
     return window.navigator.userAgent.match(/cjApp/) !== null
   },
+  mutualToApp(data) {
+    window[data.project].appLinkNative(data.password + ".native.page.contactserve", JSON.stringify(data.param))
+  },
   isWeixinClient() {
     return window.navigator.userAgent.toLowerCase().match(/micromessenger/) !== null
   },
@@ -469,6 +472,7 @@ const fn = {
         return 0.5 * (Math.pow((pos - 2), 5) + 2)
       }
     }
+
     function tick() {
       currentTime += 1 / 60
       let p = currentTime / time,

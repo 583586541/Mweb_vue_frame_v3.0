@@ -63,7 +63,7 @@
           <div class="key">优惠</div>
           <div class="val clearfix">
             <em class="state">已选</em>满2000元，立减100元</div>
-          <div class="more" @click="FSelectCfg.state = true">更多
+          <div class="more" @click="activityCfg.state = true">更多
             <em class="icon"></em>
           </div>
         </div>
@@ -76,7 +76,7 @@
           </li>
         </ul>
       </div>
-      <div class="evaluate">
+      <div class="evaluate" v-if="false">
         <div class="fraction">
           <div class="score">4.9
             <strong>/5</strong>
@@ -127,7 +127,7 @@
           </div>
         </div>
       </div>
-      <div class="doubt">
+      <div class="doubt" v-if="false">
         <div class="column-name">大家都在问</div>
         <ul>
           <li>
@@ -218,12 +218,12 @@
         </div>
         <div class="feature">
           <div class="tit">产品特色</div>
-          <div class="html" v-html="p"></div>
+          <div class="html" v-html="1"></div>
         </div>
       </div>
       <div class="pdt-trip" ref="pdtTrip">
         <div class="tit">行程安排</div>
-        <div class="html" v-html="p"></div>
+        <div class="html" v-html="aaaa"></div>
       </div>
       <div class="pdt-cost" ref="pdtCost">
         <div class="tit">费用说明</div>
@@ -333,21 +333,45 @@
         </ul>
       </div>
     </div>
+
     <footer>
       <div class="tool">
-        <div class="kf">
+        <div v-if="$.isAppClient()" class="kf" @click="serviceCfg.state = true">
           <em class="icon"></em>
           <span>在线客服</span>
         </div>
+        <div v-else class="kf">
+          <a href="Tel:19959522028"><em class="icon"></em><span>在线客服</span></a>
+        </div>
         <div class="collect">
           <em class="icon"></em>
-          <span>客服</span>
+          <span>收藏</span>
         </div>
       </div>
       <input type="button" value="开始预订">
     </footer>
+
     <FReturnTop :config="FReturnTopCfg"></FReturnTop>
-    <FSelect :config="FSelectCfg" v-on:close="FSelectCfg.state = false" v-on:res="resFSelect"></FSelect>
+    <FSelect :config="activityCfg" v-on:close="activityCfg.state = false" v-on:res="resActivity"></FSelect>
+    <transition name="fade">
+      <section class="FSelect service-mod" v-if="serviceCfg.state">
+        <div class="FSelect-mask" @click="serviceCfg.state = false"></div>
+        <div class="FSelect-wrap">
+          <div class="FSelect-body">
+            <ul ref="items">
+              <li class="telephone">
+                <a href="Tel:19959522028"><em></em>语音通话</a>
+              </li>
+              <li class="artificial" @click="$.mutualToApp({ project: 'appNb', password: 'nb', param: { jiba: '18cm' }})">
+                <em></em>在线客服
+              </li>
+            </ul>
+          </div>
+          <div class="FSelect-close" @click="serviceCfg.state = false">取消</div>
+        </div>
+      </section>
+    </transition>
+
   </div>
 </template>
 
@@ -365,11 +389,13 @@
         },
         FReturnTopCfg: {},
 
-        FSelectCfg: {
+        activityCfg: {
           state: false,
           items: []
         },
-
+        serviceCfg: {
+          state: false
+        },
         swiperOption: {
           pagination: {
             el: '.swiper-pagination'
@@ -387,7 +413,8 @@
         suspension: false,
         tabNavsList: ['产品特色', '行程安排', '费用说明', '预订须知'],
         tabNavsActiveIndex: 0,
-        p: '<p style="font-size: .32rem">段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落</p>'
+
+        aaaa: "",
       }
     },
     computed: {
@@ -416,7 +443,7 @@
           'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471716496161432.jpg',
           'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471723900535567.jpg'
         ]
-        _this.FSelectCfg.items = [{
+        _this.activityCfg.items = [{
             name: '测试1',
             code: 1
           },
@@ -454,12 +481,28 @@
           _this.addScrollEvent()
         })
       }, 200)
+
+      // _this.productDetail()
     },
     mounted() {
       this.swiper.autoplay.stop()
       this.FReturnTopCfg = this.$refs.vBody
     },
     methods: {
+      async productDetail() {
+        let _this = this,
+          $ = _this.$
+        let res = await $.axiosPost({
+          url: _this.api.productDetail,
+          param: {},
+          load: true
+        })
+        if (!res) {
+          return
+        }
+        _this.aaaa = res.data
+        console.log(res)
+      },
       slideChange() {
         this.swiperIndex = this.swiper.activeIndex
       },
@@ -535,12 +578,12 @@
         refs.vBody.scrollTop = target + 1
         _this.tabNavsActiveIndex = i
       },
-      resFSelect(item) {
+      resActivity(item) {
         let _this = this
-        _this.$set(_this.FSelectCfg, 'checked', item)
+        _this.$set(_this.activityCfg, 'checked', item)
 
         _this.$nextTick(function () {
-          _this.$set(_this.FSelectCfg, 'state', false)
+          _this.$set(_this.activityCfg, 'state', false)
         })
       }
     },
