@@ -76,7 +76,7 @@
           </li>
         </ul>
       </div>
-      <div class="evaluate" v-if="false">
+      <div class="evaluate" v-if="true">
         <div class="fraction">
           <div class="score">4.9
             <strong>/5</strong>
@@ -127,7 +127,7 @@
           </div>
         </div>
       </div>
-      <div class="doubt" v-if="false">
+      <div class="doubt" v-if="true">
         <div class="column-name">大家都在问</div>
         <ul>
           <li>

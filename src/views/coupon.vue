@@ -126,7 +126,7 @@
         _this.ajaxing = true
 
         let res = await $.axiosPost({
-          url: _this.api.wechatSign,
+          url: _this.api.productDetail,
           param: {
             url: document.location.href,
             page: _this.page
