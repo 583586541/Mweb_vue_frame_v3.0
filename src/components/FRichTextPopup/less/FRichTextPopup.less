@@ -1,0 +1,60 @@
+.FRichTextPopup {
+  &:extend(.pa);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  .FRichTextPopup-mask {
+    &:extend(.pa);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+  }
+  .FRichTextPopup-wrap {
+    &:extend(.pa);
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+  }
+  .FRichTextPopup-header {
+    line-height: .9rem;
+    font-size: .32rem;
+    color: #202020;
+    border-bottom: 1px solid #ddd;
+    &:extend(.pr);
+    .title {
+      max-width: 5.7rem;
+      margin: 0 auto;
+      text-align: center;
+      &:extend(.ellipsis);
+    }
+    .close {
+      &:extend(.pa);
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: .9rem;
+      &:extend(.jccaic);
+      &:after {
+        content: '\200B';
+        width: .32rem;
+        height: .32rem;
+        .bg-image('close.png');
+      }
+    }
+  }
+  .FRichTextPopup-body {
+    padding: .17rem .24rem;
+    height: 5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: .28rem;
+    line-height: 1.5;
+    color: #202020;
+    word-break: break-all;
+  }
+}

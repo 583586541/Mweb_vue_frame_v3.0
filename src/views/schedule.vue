@@ -71,7 +71,7 @@
           <span>总额
             <em>￥</em>
           </span>99999.99</div>
-        <div v-if="!$.isAppClient()" class="kf" @click="serviceCfg.state = true">
+        <div v-if="$.isAppClient()" class="kf" @click="serviceCfg.state = true">
           <em class="icon"></em>
           <span>在线客服</span>
         </div>
@@ -353,6 +353,8 @@
         if (!_this.adultNumber && !_this.childNumber) {
           return
         }
+
+        _this.$router.push('/resource')
       }
     },
     components: {

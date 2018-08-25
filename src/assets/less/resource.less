@@ -1,0 +1,232 @@
+.resource-v {
+  .v-body {
+    bottom: 1.1rem !important;
+    padding: .2rem .24rem 0;
+  }
+  .mod-name {
+    line-height: .9rem;
+    font-size: .32rem;
+    color: #202020;
+    border-bottom: 1px solid #ddd;
+  }
+  .trip,
+  .mandatory,
+  .other-service,
+  .room {
+    background-color: #fff;
+    padding: 0 .24rem;
+    border-radius: .1rem;
+    margin-bottom: .2rem;
+  }
+  .trip {
+    .detail {
+      color: #202020;
+      padding: .21rem 0 .2rem;
+    }
+    .set-meal {
+      font-size: .32rem;
+      line-height: .48rem;
+    }
+    .date {
+      font-size: .24rem;
+      line-height: .42rem;
+    }
+  }
+  .mandatory {
+    .detail {
+      color: #202020;
+      padding: .28rem 0 .26rem;
+      font-size: .28rem;
+    }
+    .combined-transport {
+      line-height: 1;
+      margin-bottom: .12rem;
+    }
+    .list {
+      line-height: 1.5;
+    }
+    .subtotal {
+      color: #999999;
+      margin-top: .14rem;
+      line-height: .32rem;
+      &:extend(.jcsb);
+      em,
+      strong {
+        &:extend(.dib);
+        vertical-align: bottom;
+        color: #ff3f12;
+      }
+      em {
+        font-size: .24rem;
+      }
+      strong {
+        font-size: .32rem;
+      }
+    }
+  }
+  .other-service {
+    li {
+      &:extend(.df);
+      padding: .24rem 0;
+      border-bottom: 1px solid #ddd;
+      &:last-child {
+        border: none;
+      }
+    }
+    .checkbox {
+      width: .3rem;
+      height: .3rem;
+      .bg-image('checbox.png');
+      margin: .05rem .2rem 0 0;
+      &.checked {
+        .bg-image('checbox_checked.png');
+      }
+    }
+    .detail {
+      width: 4.4rem;
+      font-size: .28rem;
+      color: #202020;
+      line-height: .4rem;
+    }
+    .right-side {
+      flex: 1;
+      text-align: right;
+      .price {
+        color: #999999;
+        line-height: .32rem;
+        margin: .04rem 0 .08rem;
+        em,
+        strong {
+          &:extend(.dib);
+          vertical-align: bottom;
+          color: #ff3f12;
+        }
+        em {
+          font-size: .24rem;
+        }
+        strong {
+          font-size: .32rem;
+        }
+      }
+      .explain {
+        font-size: .24rem;
+        color: #999999;
+        line-height: 1.5;
+        em {
+          &:extend(.dib);
+          vertical-align: top;
+          width: .11rem;
+          height: .2rem;
+          margin: .08rem 0 0 .1rem;
+          .bg-image('more_right_small.png');
+        }
+      }
+    }
+  }
+  .room {
+    margin-bottom: 0;
+    .detail {
+      color: #202020;
+      font-size: .28rem;
+      line-height: 1rem;
+      &:extend(.df);
+      &:extend(.aic);
+      &:extend(.jcsb);
+      em {
+        color: #ff3f12;
+      }
+    }
+  }
+  .agreement {
+    line-height: .88rem;
+    font-size: .28rem;
+    color: #202020;
+    a {
+      color: #03b68f;
+    }
+  }
+  footer {
+    height: 1.1rem;
+    &:extend(.pa);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    box-sizing: border-box;
+    &:extend(.aic);
+    justify-content: space-between;
+    input {
+      line-height: .8rem;
+      font-size: .32rem;
+      color: #fff;
+      margin-right: .2rem;
+      width: 3.2rem;
+      background-color: #fd8b2f;
+      border-radius: .1rem;
+      &.disabled {
+        background-color: #ccc;
+      }
+    }
+    .tool {
+      flex: 1;
+      font-size: .2rem;
+      color: #626566;
+      line-height: 1;
+      &:extend(.jccaic);
+      text-align: center;
+      a {
+        color: #626566;
+      }
+      .kf {
+        width: 1.4rem;
+        .icon {
+          &:extend(.db);
+          width: .46rem;
+          height: .4rem;
+          margin: 0 auto .12rem;
+          .bg-image('kf.png');
+        }
+      }
+      .price {
+        flex: 1;
+        font-size: .4rem;
+        text-align: left;
+        color: #ff3f12;
+        span {
+          &:extend(.dib);
+          vertical-align: bottom;
+          font-size: .24rem;
+          margin-bottom: .04rem;
+          margin-left: .24rem;
+          color: #999999;
+          em {
+            color: #ff3f12;
+          }
+        }
+      }
+    }
+  }
+  .service-mod {
+    ul {
+      height: 2rem;
+    }
+    a {
+      display: block;
+      color: #202020;
+    }
+    em {
+      &:extend(.dib);
+      vertical-align: top;
+      width: .32rem;
+      height: .32rem;
+      margin: .08rem .1rem 0 0;
+    }
+    .telephone em {
+      .bg-image('telephone.png');
+    }
+    .artificial em {
+      .bg-image('artificial.png');
+    }
+  }
+}

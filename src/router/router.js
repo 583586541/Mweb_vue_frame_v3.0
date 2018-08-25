@@ -13,6 +13,7 @@ import departure from '@/views/departure'
 import schedule from '@/views/schedule'
 import travels from '@/views/travels'
 import imgZoom from '@/views/imgZoom'
+import resource from '@/views/resource'
 
 Vue.use(Router)
 
@@ -108,6 +109,14 @@ export default new Router({
       component: schedule,
       meta: {
         title: '选择日期和人数'
+      }
+    },
+    {
+      path: '/resource',
+      name: 'resource',
+      component: resource,
+      meta: {
+        title: '选择资源'
       }
     },
     {
