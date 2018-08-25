@@ -1,0 +1,47 @@
+.FControlQuantity {
+  &:extend(.df);
+  border: 1px solid #e0e0e0;
+  width: 1.58rem;
+  border-radius: .04rem;
+  height: .48rem;
+  background-color: #fff;
+  .reduce, .add {
+    width: .51rem;
+    box-sizing: border-box;
+    &:extend(.jccaic );
+    &:after {
+      content: '\200B';
+      width: .48rem;
+      height: .48rem;
+    }
+    &.reduce {
+      border-right: 1px solid #e0e0e0;
+      &:after {
+        .bg-image('reduce_quantity.png');
+      }
+    }
+    &.add {
+      border-left: 1px solid #e0e0e0;
+      &:after {
+        .bg-image('add_quantity.png');
+      }
+    }
+    &.disabled.reduce {
+      &:after {
+        .bg-image('reduce_quantity_disabled.png');
+      }
+    }
+    &.disabled.add {
+      &:after {
+        .bg-image('add_quantity_disabled.png');
+      }
+    }
+  }
+  .number:disabled {
+    width: .56rem;
+    text-align: center;
+    font-size: .24rem;
+    color: #000;
+    background-color: transparent;
+  }
+}
