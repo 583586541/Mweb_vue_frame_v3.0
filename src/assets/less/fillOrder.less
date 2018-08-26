@@ -1,0 +1,131 @@
+.fillOrder-v {
+  .v-body {
+    bottom: 1.1rem !important;
+    padding: .2rem .24rem 0;
+  }
+
+  .mod-name {
+    line-height: .9rem;
+    font-size: .32rem;
+    color: #202020;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+  }
+  .pdt-detail, .instant-confirmation {
+    background-color: #fff;
+    padding: 0 .24rem;
+    border-radius: .1rem;
+    margin-bottom: .2rem;
+  }
+  .pdt-detail {
+    .detail {
+      padding: .2rem 0 .3rem;
+      color: #202020;
+    }
+    .pdt-name {
+      font-size: .32rem;
+      line-height: 1.5;
+    }
+    .passenger-date {
+      font-size: .24rem;
+      line-height: 1;
+      margin-top: .1rem;
+      span {
+        &:extend(.fl);
+        &.date, &.adult {
+          margin-right: .16rem;
+        }
+      }
+    }
+  }
+  .instant-confirmation {
+    &:extend(.aic);
+    .checkbox {
+      width: .3rem;
+      height: .3rem;
+      .bg-image('checbox.png');
+      margin: .05rem .2rem 0 0;
+      &.checked {
+        .bg-image('checbox_checked.png');
+      }
+    }
+    .cont {
+      flex: 1;
+      padding: .3rem 0 .23rem;
+      .name {
+        color: #03b68f;
+        font-size: .32rem;
+        line-height: 1;
+        margin-bottom: .11rem;
+      }
+      .des {
+        color: #999999;
+        font-size: .28rem;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  footer {
+    height: 1.1rem;
+    &:extend(.pa);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    box-sizing: border-box;
+    &:extend(.aic);
+    justify-content: space-between;
+    input {
+      line-height: .8rem;
+      font-size: .32rem;
+      color: #fff;
+      margin-right: .2rem;
+      width: 3.2rem;
+      background-color: #fd8b2f;
+      border-radius: .1rem;
+      &.disabled {
+        background-color: #ccc;
+      }
+    }
+    .tool {
+      flex: 1;
+      font-size: .2rem;
+      color: #626566;
+      line-height: 1;
+      &:extend(.jccaic);
+      text-align: center;
+      a {
+        color: #626566;
+      }
+      .kf {
+        width: 1.4rem;
+        .icon {
+          &:extend(.db);
+          width: .46rem;
+          height: .4rem;
+          margin: 0 auto .12rem;
+          .bg-image('kf.png');
+        }
+      }
+      .price {
+        flex: 1;
+        font-size: .4rem;
+        text-align: left;
+        color: #ff3f12;
+        span {
+          &:extend(.dib);
+          vertical-align: bottom;
+          font-size: .24rem;
+          margin-bottom: .04rem;
+          margin-left: .24rem;
+          color: #999999;
+          em {
+            color: #ff3f12;
+          }
+        }
+      }
+    }
+  }
+}

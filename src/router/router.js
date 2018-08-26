@@ -14,6 +14,7 @@ import schedule from '@/views/schedule'
 import travels from '@/views/travels'
 import imgZoom from '@/views/imgZoom'
 import resource from '@/views/resource'
+import fillOrder from '@/views/fillOrder'
 
 Vue.use(Router)
 
@@ -21,7 +22,7 @@ export default new Router({
   routes: [
     { // 重定向到首页
       path: '',
-      redirect: '/register'
+      redirect: '/lineDetails'
     },
     {
       path: '/demo',
@@ -117,6 +118,14 @@ export default new Router({
       component: resource,
       meta: {
         title: '选择资源'
+      }
+    },
+    {
+      path: '/fillOrder',
+      name: 'fillOrder',
+      component: fillOrder,
+      meta: {
+        title: '填写信息'
       }
     },
     {

@@ -74,7 +74,7 @@
           </a>
         </div>
       </div>
-      <input type="button" value="下一步">
+      <input type="button" value="下一步" @click="goNext">
     </footer>
 
     <transition name="fade">
@@ -170,6 +170,11 @@
         }
         _this[key]++
       },
+      goNext() {
+        let _this = this
+
+        _this.$router.push('/fillOrder')
+      }
     },
     components: {
       FHeader,
