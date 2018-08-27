@@ -365,9 +365,6 @@ const fn = {
   stRemove(data) {
     api.STORAGETYPE.removeItem(api.STORAGEPREFIX + data)
   },
-  stClear(data) {
-    api.STORAGETYPE.removeItem(api.STORAGEPREFIX + data)
-  },
   stClear() {
     for (let i in api.STORAGETYPE) {
       if (i.indexOf(api.STORAGEPREFIX) !== -1) {
