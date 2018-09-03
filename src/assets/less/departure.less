@@ -1,0 +1,54 @@
+.departure-v {
+  &.v-wrap {
+    background-color: #fff !important;
+  }
+
+  ul {
+    padding: .1rem .24rem 0;
+    font-size: .24rem;
+    line-height: 1;
+  }
+
+  li {
+    &:extend(.fl);
+    text-align: center;
+    background-color: #f3f4f5;
+    width: 2.2rem;
+    height: .8rem;
+    margin: .2rem .2rem 0 0;
+    border-radius: .06rem;
+    overflow: hidden;
+
+    &.checked {
+      &:extend(.pr);
+      border: 1px solid #03b68f;
+      box-sizing: border-box;
+      background-color: #fff;
+
+      &:after {
+        &:extend(.pa);
+        right: 0;
+        bottom: 0;
+        content: '\200B';
+        width: .33rem;
+        height: .33rem;
+        .bg-image('checked_area.png');
+      }
+    }
+
+    &:nth-child(3n+0) {
+      margin-right: 0;
+    }
+
+    .place {
+      padding: 0 .2rem;
+      &:extend(.ellipsis);
+      color: #202020;
+      margin: .13rem 0 .07rem;
+    }
+
+    .price {
+      color: #ff3f12;
+    }
+  }
+}

@@ -6,7 +6,8 @@ const url = {
   getFindPasswordCode: '/api/message/getFindPasswordCode',
   updatePsd: '/api/account/updatePsd',
   login: '/api/account/login',
-  productDetail: '/api/web/productDetail'
+  productDetail: '/api/web/productDetail',
+  test2: '/api/test/test2'
 }
 
 // 常量

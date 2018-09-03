@@ -20,7 +20,8 @@
         <div class="FCell Password">
           <div class="key password"></div>
           <div class="val">
-            <input class="input" :type="visualization ? 'text' : 'password'" maxlength="16" placeholder="6-16位字符的密码（数字和字母组成）" v-model.trim="password">
+            <input class="input" :type="visualization ? 'text' : 'password'" maxlength="16" placeholder="6-16位字符的密码（数字和字母组成）"
+              v-model.trim="password">
             <span :class="['icon', visualization ? 'EO' : 'EC']" @click="visualization = !visualization"></span>
           </div>
         </div>

@@ -1,34 +1,39 @@
 <template>
-  <div class="doubt-v v-wrap">
+  <div class="selectUser-v v-wrap">
     <FHeader :config="FHeaderCfg"></FHeader>
-    <div :class="['v-body', { 'can-ask': $.isAppClient() }]" ref="vBody">
-      <div class="load-more-mod" ref="contWrap">
-        <div class="item" v-for="item in questionList" v-bind:key="item.id" @click="$router.push('/doubtDetail')">
-          <h2>九寨沟地震了，现在还开放吗？还接待散客吗？是否对外开放?</h2>
-          <p>
-            <span class="adopt">采纳</span>
-            <span class="optimum">最佳</span>游客1号：您好，新闻上说，现在只接待团队，暂时不接待散客。并且只开放部分景点，每新闻上说，游客1号：您好，新闻上说，现在只接待团队，暂时不接待散客。并且只开放部分景点，每新闻上说</p>
-          <dl>
-            <dt>
-              <img src="http://niub-dev.oss-cn-shanghai.aliyuncs.com/1535612415754144462.jpg">
-              <span>篮球1号</span>
-            </dt>
-            <dd>
-              <span class="consult">
-                <em class="icon"></em>36</span>
-              <span class="msg">
-                <em class="icon"></em>36</span>
-            </dd>
-          </dl>
+    <div class="v-body" ref="vBody">
+
+      <div class="add-search">
+        <div class="add"><em></em>新增乘客</div>
+        <div class="search">
+          <div class="input" @click="$router.push('/searchUser')"><em></em>请输入姓名</div>
         </div>
+      </div>
+
+      <div class="user-cont" ref="userCont">
+        <ul ref="userList">
+          <li class="clearfix" v-for="item in userList" v-bind:key="item.id">
+            <div class="left-side">
+              <div class="checkbox"></div>
+              <div class="info">
+                <div class="name-sex">二狗子<span>GOUZI/ER</span>女</div>
+                <div class="card">身份证<span>35032191201112538</span></div>
+              </div>
+            </div>
+            <div class="edit"></div>
+          </li>
+        </ul>
         <div class="loading" v-show="ajaxing && page > 1">
-          <em class="icon"></em>正在加载</div>
+          <em class="icon"></em>正在加载
+        </div>
         <div class="no-more" v-show="finish">没有更多了~</div>
       </div>
+
     </div>
-    <footer class="ask-on" v-if="$.isAppClient()">
-      <div>我要提问</div>
+    <footer>
+      <div class="complete">完成</div>
     </footer>
+
     <FReturnTop :config="FReturnTopCfg"></FReturnTop>
   </div>
 </template>
@@ -37,17 +42,18 @@
   import FHeader from '../components/FHeader/FHeader'
   import FReturnTop from '../components/FReturnTop/FReturnTop'
   export default {
-    name: 'doubt',
+    name: 'selectUser',
     data() {
       return {
         FHeaderCfg: {
-          title: '全部提问'
+          title: '选择出行人'
         },
         FReturnTopCfg: {},
 
-        questionList: [],
+        userContHeight: 0,
+        userListHeight: 0,
 
-        contWrapHeight: 0,
+        userList: [],
 
         finish: false, // 判断是否加载结束
         ajaxing: false, // 是否正在加载中
@@ -60,7 +66,8 @@
       this.productDetail()
     },
     mounted() {
-      this.FReturnTopCfg = this.$refs.vBody
+      this.FReturnTopCfg = this.$refs.userCont
+      this.userContHeight = this.$refs.userCont.clientHeight
       this.bindScroll()
     },
     methods: {
@@ -99,10 +106,10 @@
           _this.finish = true
         }
 
-        _this.questionList = _this.questionList.concat(data)
+        _this.userList = _this.userList.concat(data)
 
         _this.$nextTick(function () {
-          _this.contWrapHeight = _this.$refs.contWrap.clientHeight
+          _this.userListHeight = _this.$refs.userList.clientHeight
         })
 
         _this.ajaxing = false
@@ -110,12 +117,13 @@
       },
       bindScroll() {
         let _this = this,
-          vBody = _this.$refs.vBody
+          userCont = _this.$refs.userCont
 
-        vBody.addEventListener('scroll', function () {
-          let maxScroll = _this.contWrapHeight - vBody.clientHeight
+        userCont.addEventListener('scroll', function () {
 
-          if (maxScroll - vBody.scrollTop <= _this.criticalPoint && !_this.ajaxing && !_this.finish) {
+          let maxScroll = _this.userListHeight - _this.userContHeight
+
+          if (maxScroll - userCont.scrollTop <= _this.criticalPoint && !_this.ajaxing && !_this.finish) {
             _this.productDetail()
           }
         })

@@ -4,7 +4,8 @@
     <div class="v-body" ref="vBody">
       <div class="tab-navs-wrap" ref="navsWrap">
         <ul class="tab-navs">
-          <li :class="{ 'checked': index == onIndex }" v-for="(item, index) in navs" v-bind:key="item.id" @click="changeNav(index)">{{ item.name }}</li>
+          <li :class="{ 'checked': index == onIndex }" v-for="(item, index) in navs" v-bind:key="item.id" @click="changeNav(index)">{{
+            item.name }}</li>
         </ul>
       </div>
       <div class="tab-conts-wrap" ref="contsWrap">

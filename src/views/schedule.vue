@@ -23,7 +23,8 @@
           <li :class="{
             'disabled': !item.usable,
             's-checked': item.usable && item.time == kalendarCfg.sValue,
-          }" v-for="item in kalendarItems" v-bind:key="item.id">
+          }"
+            v-for="item in kalendarItems" v-bind:key="item.id">
             <div class="surplus" v-if="item.usable && item.surplus <= 10">余{{ item.surplus }}</div>
             <div class="date" @click="kalendarRes(item)">{{ item.date }}</div>
             <div class="price" v-if="item.usable">&yen;{{ item.price }}</div>
@@ -32,7 +33,8 @@
       </div>
 
       <div class="detail">
-        <div class="date">{{ $.complement(kalendarCfg.sCache.month + 1) }}月{{ $.complement(kalendarCfg.sCache.date) }}日出发</div>
+        <div class="date">{{ $.complement(kalendarCfg.sCache.month + 1) }}月{{ $.complement(kalendarCfg.sCache.date)
+          }}日出发</div>
         <div class="adult">
           <div class="key">成人数量</div>
           <div class="FControlQuantity">

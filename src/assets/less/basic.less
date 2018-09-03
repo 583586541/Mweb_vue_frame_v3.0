@@ -1,5 +1,6 @@
 @themeColor: #03b68f;
 @buttonColor: #8be7d2;
+
 html,
 body,
 #app,
@@ -16,21 +17,26 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-overflow-scrolling: touch;
+
   &.no-head-state .v-wrap {
     .FHeader {
       display: none;
     }
+
     .v-body,
     .v-child {
       top: 0;
     }
+
     .suspension {
       top: 0;
     }
   }
+
   .v-wrap {
     position: relative;
     background-color: #f6f6f6;
+
     .v-body,
     .v-child {
       position: absolute;
@@ -41,6 +47,7 @@ body {
       overflow-x: hidden;
       overflow-y: auto;
       z-index: 1;
+
       &.v-child {
         z-index: 99;
       }
@@ -84,9 +91,11 @@ body {
   0% {
     transform: scale(0);
   }
+
   50% {
     transform: scale(1.5);
   }
+
   100% {
     transform: scale(1);
   }
@@ -100,12 +109,14 @@ body {
   bottom: 0;
   height: 100%;
   z-index: 1000;
+
   .weui-toast {
     top: 50%;
     width: 1.28rem;
     height: 1.28rem;
     background-color: transparent;
     transform: translate(-50%, -50%);
+
     .weui-loading {
       width: 1.28rem;
       height: 1.28rem;
@@ -115,9 +126,15 @@ body {
       margin: 0;
       animation: revolve 1s linear 0s infinite;
       animation-fill-mode: forwards;
+
       @keyframes revolve {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
       }
     }
   }
@@ -126,16 +143,20 @@ body {
 .vux-toast {
   position: relative;
   z-index: 1000;
+
   .weui-toast {
     width: 2.44rem !important;
     min-height: 2.44rem;
     border-radius: .1rem;
+
     .weui-icon_toast {
       margin-top: .40rem;
+
       &:before {
         font-size: 1.1rem;
       }
     }
+
     .weui-toast__content {
       margin: .1rem 0 .37rem;
       font-size: .28rem;

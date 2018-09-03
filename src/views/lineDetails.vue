@@ -195,7 +195,8 @@
 
       </div>
       <ul :class="['tab-navs', { 'suspension': suspension }]" ref="tabNavs">
-        <li :class="{ 'on': index == tabNavsActiveIndex }" v-for="(list, index) in tabNavsList" v-bind:key="list.id" @click="jumpToAnchor(index)">{{ list }}</li>
+        <li :class="{ 'on': index == tabNavsActiveIndex }" v-for="(list, index) in tabNavsList" v-bind:key="list.id"
+          @click="jumpToAnchor(index)">{{ list }}</li>
       </ul>
       <div class="tab-navs-placehoder" v-if="suspension"></div>
       <div class="pdt-feature" ref="pdtFeature">
@@ -278,7 +279,7 @@
           </router-link>
         </li>
       </ul>
-      <div class="travels" ref="travels">
+      <div class="travels" ref="travels" v-show="false">
         <div class="column-name">相关游记</div>
         <dl @click="$router.push('/travels')">
           <dt>
@@ -315,7 +316,8 @@
         <div class="column-name">更多产品推荐</div>
         <ul class="clearfix">
           <li>
-            <img src="https://ss0.bdstatic.com/-0U0bnSm1A5BphGlnYG/tam-ogel/dfb94e0cf16e81f68a5c48f4dc55dbae_259_146.jpg" alt="">
+            <img src="https://ss0.bdstatic.com/-0U0bnSm1A5BphGlnYG/tam-ogel/dfb94e0cf16e81f68a5c48f4dc55dbae_259_146.jpg"
+              alt="">
             <div class="title">的说法萨法撒仿盛大飞的说的说法萨法撒仿的说法萨法撒仿盛大飞的说法速度方式盛大飞的说法速度方式法速度方式</div>
             <div class="price">&yen;
               <em>8888</em>
@@ -323,7 +325,8 @@
             </div>
           </li>
           <li>
-            <img src="https://ss0.bdstatic.com/-0U0bnSm1A5BphGlnYG/tam-ogel/dfb94e0cf16e81f68a5c48f4dc55dbae_259_146.jpg" alt="">
+            <img src="https://ss0.bdstatic.com/-0U0bnSm1A5BphGlnYG/tam-ogel/dfb94e0cf16e81f68a5c48f4dc55dbae_259_146.jpg"
+              alt="">
             <div class="title">的说法萨法撒仿盛大飞的说的说法萨法撒仿的说法萨法撒仿盛大飞的说法速度方式盛大飞的说法速度方式法速度方式</div>
             <div class="price">&yen;
               <em>8888</em>
@@ -343,7 +346,7 @@
         <div v-else class="kf">
           <a href="Tel:19959522028"><em class="icon"></em><span>在线客服</span></a>
         </div>
-        <div class="collect">
+        <div class="collect" v-if="$.isAppClient()">
           <em class="icon"></em>
           <span>收藏</span>
         </div>

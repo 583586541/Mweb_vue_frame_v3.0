@@ -9,18 +9,22 @@ import album from '@/views/album'
 import coupon from '@/views/coupon'
 import comment from '@/views/comment'
 import doubt from '@/views/doubt'
+import doubtDetail from '@/views/doubtDetail'
 import departure from '@/views/departure'
 import schedule from '@/views/schedule'
 import travels from '@/views/travels'
 import imgZoom from '@/views/imgZoom'
 import resource from '@/views/resource'
 import fillOrder from '@/views/fillOrder'
+import downApp from '@/views/downApp'
+import selectUser from '@/views/selectUser'
+import editUser from '@/views/editUser'
+import searchUser from '@/views/searchUser'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    { // 重定向到首页
+  routes: [{ // 重定向到首页
       path: '',
       redirect: '/lineDetails'
     },
@@ -46,6 +50,14 @@ export default new Router({
       component: GVRP,
       meta: {
         title: '牛掰用户注册协议'
+      }
+    },
+    {
+      path: '/downApp',
+      name: 'downApp',
+      component: downApp,
+      meta: {
+        title: '下载App'
       }
     },
     {
@@ -93,7 +105,15 @@ export default new Router({
       name: 'doubt',
       component: doubt,
       meta: {
-        title: '提问'
+        title: '全部提问'
+      }
+    },
+    {
+      path: '/doubtDetail',
+      name: 'doubtDetail',
+      component: doubtDetail,
+      meta: {
+        title: '提问详情'
       }
     },
     {
@@ -126,6 +146,30 @@ export default new Router({
       component: fillOrder,
       meta: {
         title: '填写信息'
+      }
+    },
+    {
+      path: '/selectUser',
+      name: 'selectUser',
+      component: selectUser,
+      meta: {
+        title: '选择出行人'
+      }
+    },
+    {
+      path: '/searchUser',
+      name: 'searchUser',
+      component: searchUser,
+      meta: {
+        title: '查找出行人'
+      }
+    },
+    {
+      path: '/editUser',
+      name: 'editUser',
+      component: editUser,
+      meta: {
+        title: '编辑出行人'
       }
     },
     {

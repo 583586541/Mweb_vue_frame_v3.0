@@ -2,14 +2,18 @@
   .v-body {
     bottom: 1.1rem !important;
   }
+
   .FKalendar {
     margin-bottom: .2rem;
+
     .FKalendar-date-items li {
       height: 1.2rem;
       margin: 0;
+
       .date {
         line-height: 1.2rem;
       }
+
       .surplus,
       .price {
         &:extend(.pa);
@@ -18,14 +22,18 @@
         font-size: .2rem;
         line-height: 1;
         color: #ff3f12;
+
         &.surplus {
           top: .18rem;
         }
+
         &.price {
           bottom: .18rem;
         }
       }
+
       &.s-checked {
+
         .surplus,
         .price {
           color: #fff;
@@ -37,7 +45,10 @@
   .detail {
     background-color: #fff;
     padding: 0 .24rem;
-    .date, .adult, .child {
+
+    .date,
+    .adult,
+    .child {
       color: #202020;
       font-size: .32rem;
       line-height: 1rem;
@@ -46,29 +57,36 @@
       &:extend(.aic);
       &:extend(.jcsb);
     }
+
     .tips {
       font-size: .24rem;
       line-height: .36rem;
+
       ul {
         color: #666666;
         padding-top: .24rem;
       }
+
       li {
         &:extend(.df);
         margin-bottom: .12rem;
+
         &:last-child {
           margin-bottom: 0;
         }
+
         em {
           width: .24rem;
           height: .24rem;
           margin: .06rem .12rem 0 0;
           .bg-image('tip.png');
         }
+
         span {
           flex: 1;
         }
       }
+
       .des {
         padding: .1rem 0 .24rem;
         color: #fe5252;
@@ -87,6 +105,7 @@
     box-sizing: border-box;
     &:extend(.aic);
     justify-content: space-between;
+
     input {
       line-height: .8rem;
       font-size: .32rem;
@@ -95,10 +114,12 @@
       width: 3.2rem;
       background-color: #fd8b2f;
       border-radius: .1rem;
+
       &.disabled {
         background-color: #ccc;
       }
     }
+
     .tool {
       flex: 1;
       font-size: .2rem;
@@ -106,11 +127,14 @@
       line-height: 1;
       &:extend(.jccaic);
       text-align: center;
+
       a {
         color: #626566;
       }
+
       .kf {
         width: 1.4rem;
+
         .icon {
           &:extend(.db);
           width: .46rem;
@@ -119,11 +143,13 @@
           .bg-image('kf.png');
         }
       }
+
       .price {
         flex: 1;
         font-size: .4rem;
         text-align: left;
         color: #ff3f12;
+
         span {
           &:extend(.dib);
           vertical-align: bottom;
@@ -131,6 +157,7 @@
           margin-bottom: .04rem;
           margin-left: .24rem;
           color: #999999;
+
           em {
             color: #ff3f12;
           }
@@ -138,14 +165,17 @@
       }
     }
   }
+
   .service-mod {
     ul {
       height: 2rem;
     }
+
     a {
       display: block;
       color: #202020;
     }
+
     em {
       &:extend(.dib);
       vertical-align: top;
@@ -153,9 +183,11 @@
       height: .32rem;
       margin: .08rem .1rem 0 0;
     }
+
     .telephone em {
       .bg-image('telephone.png');
     }
+
     .artificial em {
       .bg-image('artificial.png');
     }

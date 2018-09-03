@@ -2,14 +2,14 @@
 
 module.exports = {
   '/mf': {
-    target: 'http://192.168.1.55:8888',
+    target: 'http://192.168.1.55:8889',
     changeOrigin: true,
     pathRewrite: {
       '^/mf': ''
     }
   },
   '/dev': {
-    target: 'http://yfqc-app.test.atenops.com',
+    target: 'http://niub-app.test.atenops.com',
     changeOrigin: true,
     pathRewrite: {
       '^/dev': ''
