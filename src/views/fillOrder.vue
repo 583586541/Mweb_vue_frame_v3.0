@@ -25,7 +25,7 @@
       </div>
 
       <div class="passenger-info">
-        <div class="mod-name"><span>出行人信息</span><span class="limit" @click="limitModCfg.state = true">预订限制</span></div>
+        <div class="mod-name"><span>出行人信息</span><span class="limit" @click="FAlertCfg.state = true">预订限制</span></div>
         <ul class="user-list">
           <li class="clearfix">
             <span class="type fl">成人</span>
@@ -41,27 +41,15 @@
         </div>
         <div class="des">为了您顺利出行，请务必保证填写项与出游所持证件一致</div>
       </div>
-
-
     </div>
 
-    <transition name="fade">
-      <section class="FSelect limit-mod" v-if="limitModCfg.state">
-        <div class="FSelect-mask" @click="limitModCfg.state = false"></div>
-        <div class="FSelect-wrap">
-          <div class="FSelect-body">
-            <div class="FSelect-header">预订限制</div>
-            <div class="FSelect-html">官方店鬼打鬼京东方可利君股份恐龙当家老公看快递费就赶快来记得发个开利家电了记得看利君股份快乐的就够了款发动机了高科技的看了感觉房贷款了几个开朗大方金刚骷髅岛金刚骷髅岛分及格开利家电看老公京粉登录开机了官方店鬼打鬼京东方可利君股份恐龙当家老公看快递费就赶快来记得发个开利家电了记得看利君股份快乐的就够了款发动机了高科技的看了感觉房贷款了几个开朗大方金刚骷髅岛金刚骷髅岛分及格开利家电看老公京粉登录开机了</div>
-          </div>
-          <div class="FSelect-close" @click="limitModCfg.state = false">我知道了</div>
-        </div>
-      </section>
-    </transition>
+    <FAlert :config="FAlertCfg" v-on:close="FAlertCfg.state = false"></FAlert>
   </div>
 </template>
 
 <script>
   import FHeader from '../components/FHeader/FHeader'
+  import FAlert from '../components/FAlert/FAlert'
   export default {
     name: 'fillOrder',
     data() {
@@ -69,13 +57,16 @@
         FHeaderCfg: {
           title: '填写信息'
         },
-        limitModCfg: {
-          state: false
+        FAlertCfg: {
+          state: false,
+          title: '预订限制',
+          html: '的说法撒发生发生'
         }
       }
     },
     components: {
-      FHeader
+      FHeader,
+      FAlert
     }
   }
 </script>

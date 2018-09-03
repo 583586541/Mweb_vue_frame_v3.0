@@ -1,0 +1,57 @@
+.FAlert {
+  &:extend(.pa);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+
+  .FAlert-mask {
+    &:extend(.pa);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+  }
+
+  .FAlert-wrap {
+    &:extend(.pa);
+    top: 50%;
+    left: .75rem;
+    right: .75rem;
+    background-color: #fff;
+    transform: translateY(-50%);
+    border-radius: .2rem;
+    overflow: hidden;
+  }
+
+  .FAlert-close {
+    line-height: 1rem;
+    text-align: center;
+    background-color: #fff;
+    margin-top: 0;
+    color: #202020;
+    font-size: .32rem;
+    border-top: 1px solid #ddd;
+  }
+
+  .FAlert-header {
+    line-height: 1rem;
+    color: #03b68f;
+    font-size: .36rem;
+    text-align: center;
+    border-bottom: 1px solid #03b68f;
+  }
+
+  .FAlert-html {
+    padding: .18rem .24rem;
+    line-height: 1.5;
+    font-size: .28rem;
+    max-height: 4rem;
+    min-height: 2rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    word-break: break-all;
+  }
+}
