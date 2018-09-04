@@ -1,0 +1,72 @@
+.FScrollMore {
+  &:extend(.pa);
+  top: .9rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  overflow-y: auto;
+
+  .list {
+    font-size: .32rem;
+    color: #202020;
+    background-color: #fff;
+    padding-left: .24rem;
+
+    li {
+      border-bottom: 1px solid #ddd;
+      padding: .3rem 0;
+      line-height: 1;
+
+      &:last-child {
+        border: none;
+      }
+
+      span {
+        margin: 0 .24rem;
+      }
+
+      .name-sex {
+        color: #202020;
+        font-size: .32rem;
+      }
+
+      .card {
+        font-size: .28rem;
+        color: #666666;
+        margin-top: .2rem;
+      }
+    }
+  }
+
+  .no-more,
+  .loading {
+    font-size: .24rem;
+    color: #999;
+    text-align: center;
+    line-height: 2;
+    padding: .1rem 0;
+
+    .icon {
+      &:extend(.dib);
+      vertical-align: top;
+      width: .48rem;
+      height: .48rem;
+      background: transparent url('../images/loading.png') no-repeat 0 0;
+      background-size: 100% auto;
+      animation: revolve 1s linear 0s infinite;
+      animation-fill-mode: forwards;
+
+      @keyframes revolve {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    }
+    
+  }
+}

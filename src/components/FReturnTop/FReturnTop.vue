@@ -43,8 +43,7 @@
         
         _this.$.scrollYAxis({
           ele: _this.ele,
-          target: 0,
-          speed: 20000
+          target: 0
         })
       }
     },

@@ -444,46 +444,46 @@ const fn = {
     window.location.href = href.join('')
   },
   scrollYAxis(data) {
-    // window.requestAnimFrame = (function () {
-    //   return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback) {
-    //     window.setTimeout(callback, 1000 / 60)
-    //   }
-    // })()
-    // let scrollY = window.scrollY || document.documentElement.scrollTop || data.ele.scrollTop,
-    //   target = data.target || 0,
-    //   speed = data.speed || 20000,
-    //   easing = data.type || 'easeOutSine',
-    //   currentTime = 0
-    // let time = Math.max(.1, Math.min(Math.abs(scrollY - target) / speed, .8))
-    // let easingEquations = {
-    //   easeOutSine: function (pos) {
-    //     return Math.sin(pos * (Math.PI / 2))
-    //   },
-    //   easeInOutSine: function (pos) {
-    //     return (-0.5 * (Math.cos(Math.PI * pos) - 1))
-    //   },
-    //   easeInOutQuint: function (pos) {
-    //     if ((pos /= 0.5) < 1) {
-    //       return 0.5 * Math.pow(pos, 5)
-    //     }
-    //     return 0.5 * (Math.pow((pos - 2), 5) + 2)
-    //   }
-    // }
+    window.requestAnimFrame = (function () {
+      return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function (callback) {
+        window.setTimeout(callback, 1000 / 60)
+      }
+    })()
+    let scrollY = window.scrollY || document.documentElement.scrollTop || data.ele.scrollTop,
+      target = data.target || 0,
+      speed = data.speed || 50000,
+      easing = data.type || 'easeOutSine',
+      currentTime = 0
+    let time = Math.max(.1, Math.min(Math.abs(scrollY - target) / speed, .8))
+    let easingEquations = {
+      easeOutSine: function (pos) {
+        return Math.sin(pos * (Math.PI / 2))
+      },
+      easeInOutSine: function (pos) {
+        return (-0.5 * (Math.cos(Math.PI * pos) - 1))
+      },
+      easeInOutQuint: function (pos) {
+        if ((pos /= 0.5) < 1) {
+          return 0.5 * Math.pow(pos, 5)
+        }
+        return 0.5 * (Math.pow((pos - 2), 5) + 2)
+      }
+    }
 
-    // function tick() {
-    //   currentTime += 1 / 60
-    //   let p = currentTime / time,
-    //     t = easingEquations[easing](p)
+    function tick() {
+      currentTime += 1 / 60
+      let p = currentTime / time,
+        t = easingEquations[easing](p)
 
-    //   if (p < 1) {
-    //     requestAnimFrame(tick)
-    //     data.ele.scrollTop = scrollY + ((target - scrollY) * t)
-    //   } else {
-    //     data.ele.scrollTop = target
-    //   }
-    // }
-    // tick()
-    data.ele.scrollTop = data.target
+      if (p < 1) {
+        requestAnimFrame(tick)
+        data.ele.scrollTop = scrollY + ((target - scrollY) * t)
+      } else {
+        data.ele.scrollTop = target
+      }
+    }
+    tick()
+    // data.ele.scrollTop = data.target
   },
   // 获取浏览器的内核
 }
