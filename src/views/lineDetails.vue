@@ -279,8 +279,8 @@
           </router-link>
         </li>
       </ul>
-      <div class="travels" ref="travels" v-show="false">
-        <div class="column-name">相关游记</div>
+      <div class="travels" ref="travels" style="padding: 0;margin: 0;">
+        <!-- <div class="column-name">相关游记</div>
         <dl @click="$router.push('/travels')">
           <dt>
             <img src="http://pic1.win4000.com/mobile/5/57eddcba0f0af.jpg" alt="">
@@ -310,7 +310,7 @@
             </div>
             <span class="more"></span>
           </dd>
-        </dl>
+        </dl> -->
       </div>
       <div class="recommend">
         <div class="column-name">更多产品推荐</div>
