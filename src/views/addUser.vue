@@ -1,5 +1,5 @@
 <template>
-  <div class="editUser-v v-wrap">
+  <div class="addUser-v v-wrap">
     <FHeader :config="FHeaderCfg"></FHeader>
     <div class="v-body" ref="vBody">
       <div class="user-name">
@@ -101,11 +101,11 @@
   import FSelect from '../components/FSelect/FSelect'
   import FCalendar from '../components/FCalendar/FCalendar'
   export default {
-    name: 'editUser',
+    name: 'addUser',
     data() {
       return {
         FHeaderCfg: {
-          title: '编辑出行人'
+          title: '新增出行人'
         },
         cardTypeSelectCfg: {
           state: false,

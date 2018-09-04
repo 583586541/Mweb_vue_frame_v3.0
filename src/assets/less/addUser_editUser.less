@@ -1,0 +1,71 @@
+.addUser-v, .editUser-v {
+  .v-body {
+    bottom: 1rem !important;
+  }
+
+  .mod-title {
+    line-height: .9rem;
+    font-size: .32rem;
+    color: #202020;
+    font-weight: bold;
+  }
+
+  .user-name,
+  .card-info,
+  .other-info {
+    background-color: #fff;
+    margin: .2rem .2rem 0;
+    border-radius: .1rem;
+    padding: 0 0 0 .24rem;
+  }
+
+  .FCell {
+    border-top: 1px solid #ddd;
+    border-bottom: none;
+    min-height: 1rem;
+
+    .key {
+      width: 1.8rem;
+      margin-right: 0;
+      font-size: .32rem;
+      color: #666666;
+    }
+
+    .val {
+      .input {
+        font-size: .32rem;
+      }
+    }
+  }
+
+  .des {
+    font-size: .28rem;
+    color: #fe5252;
+    line-height: .36rem;
+    margin: .26rem .2rem .16rem;
+  }
+
+  footer {
+    &:extend(.pa);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1rem;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    box-sizing: border-box;
+    &:extend(.jccaic);
+    padding: 0 .24rem;
+    z-index: 10;
+
+    .complete {
+      width: 100%;
+      line-height: .8rem;
+      background-color: #03b68f;
+      font-size: .32rem;
+      color: #fff;
+      text-align: center;
+      border-radius: 0.1rem;
+    }
+  }
+}

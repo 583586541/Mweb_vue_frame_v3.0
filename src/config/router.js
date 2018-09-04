@@ -19,6 +19,7 @@ import fillOrder from '@/views/fillOrder'
 import downApp from '@/views/downApp'
 import selectUser from '@/views/selectUser'
 import editUser from '@/views/editUser'
+import addUser from '@/views/addUser'
 import searchUser from '@/views/searchUser'
 
 Vue.use(Router)
@@ -170,6 +171,14 @@ export default new Router({
       component: editUser,
       meta: {
         title: '编辑出行人'
+      }
+    },
+    {
+      path: '/addUser',
+      name: 'addUser',
+      component: addUser,
+      meta: {
+        title: '新增出行人'
       }
     },
     {

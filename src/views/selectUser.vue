@@ -4,7 +4,7 @@
     <div class="v-body" ref="vBody">
 
       <div class="add-search">
-        <div class="add"><em></em>新增乘客</div>
+        <div class="add" @click="$router.push('/addUser')"><em></em>新增乘客</div>
         <div class="search">
           <div class="input" @click="$router.push('/searchUser')"><em></em>请输入姓名</div>
         </div>
@@ -20,7 +20,7 @@
                 <div class="card">身份证<span>35032191201112538</span></div>
               </div>
             </div>
-            <div class="edit"></div>
+            <div class="edit" @click="$router.push('/editUser')"></div>
           </li>
         </ul>
         <div class="loading" v-show="ajaxing && page > 1">
