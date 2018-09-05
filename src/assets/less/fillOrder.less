@@ -14,7 +14,9 @@
 
   .pdt-detail,
   .instant-confirmation,
-  .passenger-info {
+  .passenger-info,
+  .contacts-info,
+  .other {
     background-color: #fff;
     padding: 0 .24rem;
     border-radius: .1rem;
@@ -139,6 +141,37 @@
     }
   }
 
+  .contacts-info {
+    .mod-name {
+      border-bottom: none;
+    }
+  }
+
+  .other {
+    .FCell:nth-child(1) {
+      border-top: none;
+    }
+  }
+
+  .FCell {
+    border-top: 1px solid #ddd;
+    border-bottom: none;
+    min-height: 1rem;
+
+    .key {
+      width: 1.64rem;
+      margin-right: 0;
+      font-size: .32rem;
+      color: #666666;
+    }
+
+    .val {
+      .input {
+        font-size: .32rem;
+      }
+    }
+  }
+
   footer {
     height: 1.1rem;
     &:extend(.pa);
@@ -150,6 +183,7 @@
     box-sizing: border-box;
     &:extend(.aic);
     justify-content: space-between;
+    z-index: 998;
 
     input {
       line-height: .8rem;
@@ -173,22 +207,6 @@
       &:extend(.jccaic);
       text-align: center;
 
-      a {
-        color: #626566;
-      }
-
-      .kf {
-        width: 1.4rem;
-
-        .icon {
-          &:extend(.db);
-          width: .46rem;
-          height: .4rem;
-          margin: 0 auto .12rem;
-          .bg-image('kf.png');
-        }
-      }
-
       .price {
         flex: 1;
         font-size: .4rem;
@@ -207,6 +225,166 @@
             color: #ff3f12;
           }
         }
+      }
+
+      .detail {
+        font-size: .24rem;
+        color: #999999;
+        margin-right: .36rem;
+
+        &.show-state em {
+          transform: rotate(180deg);
+        }
+
+        em {
+          &:extend(.dib);
+          vertical-align: top;
+          width: .26rem;
+          height: .14rem;
+          margin: .05rem 0 0 .16rem;
+          .bg-image('more_bottom.png');
+        }
+      }
+    }
+  }
+
+  .detail-mod {
+    &:extend(.pa);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 997;
+
+    .mask {
+      &:extend(.pa);
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    .wrap {
+      &:extend(.pa);
+      left: 0;
+      right: 0;
+      background-color: #fff;
+      bottom: 1.1rem;
+    }
+
+    .header {
+      line-height: 1rem;
+      text-align: center;
+      font-size: .36rem;
+      color: #202020;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .body {
+      padding: .24rem;
+      font-size: .28rem;
+      color: #202020;
+      line-height: 2;
+
+      li {
+        &:extend(.jcsb);
+      }
+
+      .sum-price {
+        color: #ff3f12;
+      }
+    }
+  }
+
+  .fast-login {
+    &:extend(.pa);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+
+    .mask {
+      &:extend(.pa);
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    .wrap {
+      &:extend(.pa);
+      top: 50%;
+      left: .75rem;
+      right: .75rem;
+      background-color: #fff;
+      transform: translateY(-50%);
+      border-radius: .2rem;
+      overflow: hidden;
+    }
+
+    .header {
+      line-height: 1.1rem;
+      text-align: center;
+      font-size: .36rem;
+      color: #03b68f;
+      border-bottom: 1px solid #03b68f;
+    }
+
+    .FCell {
+      min-height: 1.1rem;
+      .val {
+        margin-right: .2rem;
+      }
+      .key {
+        width: .32rem;
+        height: .48rem;
+        margin: 0 .2rem 0 .3rem;
+        &:extend(.jccaic);
+
+        &:after {
+          content: '\200B';
+        }
+
+        &.login-iphone:after {
+          width: .28rem;
+          height: .36rem;
+          .bg-image('iphone.png');
+        }
+
+        &.msg-code:after {
+          width: .32rem;
+          height: .32rem;
+          .bg-image('msg_code.png');
+        }
+      }
+
+      &.Msg-code input {
+        width: 2rem;
+      }
+    }
+
+    .des {
+      font-size: .24rem;
+      color: #202020;
+      padding: 0 .3rem;
+      line-height: .64rem;
+      border-top: 1px solid #ddd;
+      a {
+        color: #03b68f;
+      }
+    }
+    .footer {
+      padding: 0 .3rem .3rem;
+      div {
+        line-height: .8rem;
+        color: #fff;
+        font-size: .32rem;
+        text-align: center;
+        background-color: #03b68f;
+        border-radius: .2rem;
       }
     }
   }

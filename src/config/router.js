@@ -21,6 +21,8 @@ import selectUser from '@/views/selectUser'
 import editUser from '@/views/editUser'
 import addUser from '@/views/addUser'
 import searchUser from '@/views/searchUser'
+import invoice from '@/views/invoice'
+import specialNeeds from '@/views/specialNeeds'
 
 Vue.use(Router)
 
@@ -179,6 +181,22 @@ export default new Router({
       component: addUser,
       meta: {
         title: '新增出行人'
+      }
+    },
+    {
+      path: '/invoice',
+      name: 'invoice',
+      component: invoice,
+      meta: {
+        title: '编辑发票信息'
+      }
+    },
+    {
+      path: '/specialNeeds',
+      name: 'specialNeeds',
+      component: specialNeeds,
+      meta: {
+        title: '特殊需求'
       }
     },
     {

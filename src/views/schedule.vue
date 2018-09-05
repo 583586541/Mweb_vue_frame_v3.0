@@ -70,7 +70,7 @@
     <footer>
       <div class="tool">
         <div class="price">
-          <span>总额
+          <span>
             <em>￥</em>
           </span>99999.99</div>
         <div v-if="$.isAppClient()" class="kf" @click="serviceCfg.state = true">

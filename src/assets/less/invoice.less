@@ -1,0 +1,59 @@
+.invoice-v {
+  .v-body {
+    bottom: 1.1rem !important;
+    padding: .2rem .24rem 0;
+  }
+  .mod-name {
+    line-height: .9rem;
+    font-size: .32rem;
+    color: #202020;
+    // border-bottom: 1px solid #ddd;
+    font-weight: bold;
+  }
+
+  .type, .info {
+    background-color: #fff;
+    padding-left: .24rem;
+    border-radius: .1rem;
+    margin-bottom: .2rem;
+  }
+
+  .FCell {
+    border-top: 1px solid #ddd;
+    border-bottom: none;
+    font-size: .32rem;
+    .key {
+      width: 1.8rem;
+      margin-right: 0;
+    }
+    .val {
+      input {
+        font-size: .32rem;
+      }
+    }
+  }
+
+  footer {
+    &:extend(.pa);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1rem;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    box-sizing: border-box;
+    &:extend(.jccaic);
+    padding: 0 .24rem;
+    z-index: 10;
+
+    .complete {
+      width: 100%;
+      line-height: .8rem;
+      background-color: #03b68f;
+      font-size: .32rem;
+      color: #fff;
+      text-align: center;
+      border-radius: 0.1rem;
+    }
+  }
+}
