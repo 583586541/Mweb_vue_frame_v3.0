@@ -2,9 +2,10 @@
 const url = {
   getRegisterCode: '/api/message/getRegisterCode',
   register: '/api/account/register',
+  detail: '/api/product/detail',
+
   edit: '/api/passenger/edit',
-  
-  test2: '/api/test/test2'
+  test: '/api/test/test2'
 }
 
 // 常量

@@ -485,19 +485,21 @@
         })
       }, 200)
 
-      // _this.productDetail()
+      _this.detail()
     },
     mounted() {
       this.swiper.autoplay.stop()
       this.FReturnTopCfg = this.$refs.vBody
     },
     methods: {
-      async productDetail() {
+      async detail() {
         let _this = this,
           $ = _this.$
         let res = await $.axiosPost({
-          url: _this.api.productDetail,
-          param: {},
+          url: _this.api.detail,
+          param: {
+            productCode: 12345678
+          },
           load: true
         })
         if (!res) {
