@@ -1,9 +1,8 @@
 <template>
   <div class="FScrollMore" ref="wrap">
     <ul class="list" ref="cont">
-      <li v-for="item in list" v-bind:key="item.id" @click="res(item)">
-        <div class="name-sex">二狗子<span>GOUZI/ER</span>女</div>
-        <div class="card">身份证<span>35032191201112538</span></div>
+      <li v-for="(item, index) in list" v-bind:key="item.id" @click="res(item)">
+        {{ index + 1 }}
       </li>
     </ul>
     <div class="loading" v-show="config.requesting && config.page > 1">
@@ -51,7 +50,7 @@
 
         wrap.addEventListener('scroll', function () {
           if (_this.contHeight - _this.wrapHeight - wrap.scrollTop <= config.distance && !config.requesting && !config.finish) {
-            _this.$emit('getMore')
+            _this.$emit('more')
           }
         })
       },

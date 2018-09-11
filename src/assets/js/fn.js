@@ -313,7 +313,7 @@ const fn = {
       key = api.STORAGEPREFIX + key
       let valType = typeof (val)
       if (val !== null) {
-        let valConstructor = val.constructor
+        var valConstructor = val.constructor
       }
       if (valType === 'string' || valType === 'number' || valType === 'boolean') {
         if (valConstructor === String) {

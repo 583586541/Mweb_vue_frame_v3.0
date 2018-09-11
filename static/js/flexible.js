@@ -16,7 +16,7 @@
         var b = f.getBoundingClientRect().width;
         b / i > 540 && (b = 540 * i);
         var c = b / 10;
-        f.style.fontSize = c * (100 / 75) + "px",
+        f.style.fontSize = c * (100 / 750 * 10) + "px",
         k.rem = a.rem = c
     }
     var d, e = a.document, f = e.documentElement, g = e.querySelector('meta[name="viewport"]'), h = e.querySelector('meta[name="flexible"]'), i = 0, j = 0, k = b.flexible || (b.flexible = {});
