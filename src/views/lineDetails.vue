@@ -1,44 +1,35 @@
+<!-- http://192.168.1.82:8888/#/lineDetails?productCode=cp94417232 -->
 <template>
   <div class="lineDetails-v v-wrap">
     <FHeader :config="FHeaderCfg"></FHeader>
-    <div class="v-body" ref="vBody">
+    <div class="v-body" ref="vBody" v-show="!initAjax">
       <div class="banner">
         <swiper class="FSwiper" :options="swiperOption" ref="swiper">
           <swiper-slide v-for="slide in swiperSlides" v-bind:key="slide.id">
-            <img :src="slide">
+            <img :src="api.OSSPATH + slide.imgUrl" :alt="slide.imgName">
           </swiper-slide>
         </swiper>
         <div class="des">
           <div class="left-side">
-            <span class="departure">阿富汗出发</span>
-            <span class="supplier">龙游天下旅行社</span>
+            <span class="departure">{{ startCity }}</span>
+            <span class="supplier">{{ supplierName }}</span>
           </div>
-          <div class="right-side number">编号：6546586546</div>
+          <div class="right-side number">编号：{{ productCode }}</div>
         </div>
         <div class="swiper-index" @click="slideClicked">{{ swiperIndex + 1 }} / {{ swiperSlides.length }}
           <em class="icon"></em>
         </div>
       </div>
       <div class="synopsis">
-        <h2>海南三亚6日5晚跟团游海南三亚6日5晚跟团游海南三亚6日5三亚</h2>
+        <h2>{{ sellerProductName }}</h2>
         <div class="price">
-          <em>&yen;</em>5668
-          <strong>起/人</strong>
+          <em>&yen;</em>{{ sellPrice / 100 }}<strong>起/人</strong>
         </div>
-        <ul class="tips clearfix">
-          <li>海滨海岛</li>
-          <li>沙滩</li>
-          <li>海滨海岛</li>
-          <li>沙滩</li>
-          <li>海滨海岛</li>
-          <li>沙滩</li>
-          <li>海滨海岛</li>
-          <li>沙滩</li>
-          <li>海滨海岛</li>
-          <li>沙滩</li>
+        <ul class="tips clearfix" v-if="!$.isEmptyArr(productLable)">
+          <li v-for="item in productLable" v-bind:key="item.id">{{ item }}</li>
         </ul>
       </div>
-      <div class="discount">
+      <div class="discount" v-if="false">
         <div class="ticket cell">
           <div class="key">领券</div>
           <ul class="val clearfix">
@@ -59,7 +50,7 @@
             <em class="icon"></em>
           </div>
         </div>
-        <div class="activity cell">
+        <div class="activity cell" v-show="!$.isEmptyArr(activityCfg.items)">
           <div class="key">优惠</div>
           <div class="val clearfix">
             <em class="state">已选</em>满2000元，立减100元</div>
@@ -67,16 +58,16 @@
             <em class="icon"></em>
           </div>
         </div>
-        <ul class="tips clearfix">
+        <!-- <ul class="tips clearfix">
           <li>
             <em class="icon"></em>特色标签
           </li>
           <li>
             <em class="icon"></em>特色标签
           </li>
-        </ul>
+        </ul> -->
       </div>
-      <div class="evaluate" v-if="true">
+      <div class="evaluate" v-if="false">
         <div class="fraction">
           <div class="score">4.9
             <strong>/5</strong>
@@ -127,7 +118,7 @@
           </div>
         </div>
       </div>
-      <div class="doubt" v-if="true">
+      <div class="doubt" v-if="false">
         <div class="column-name">大家都在问</div>
         <ul>
           <li>
@@ -149,42 +140,15 @@
       </div>
       <div class="schedule">
         <div class="place">
-          <span class="area">
-            <em class="icon"></em>广州出发</span>
-          <router-link class="more" to="/departure">更多出发地
-            <em class="icon"></em>
-          </router-link>
+          <span class="area"><em class="icon"></em>{{ startCity }}出发</span>
+          <router-link class="more" to="/departure">更多出发地<em class="icon"></em></router-link>
         </div>
         <div class="schedule-wrap">
           <div class="list">
             <ul class="clearfix">
-              <li>
-                <div class="day">07/23 周一</div>
-                <div class="price">&yen;6588</div>
-              </li>
-              <li>
-                <div class="day">07/23 周一</div>
-                <div class="price">&yen;6588</div>
-              </li>
-              <li>
-                <div class="day">07/23 周一</div>
-                <div class="price">&yen;6588</div>
-              </li>
-              <li>
-                <div class="day">07/23 周一</div>
-                <div class="price">&yen;6588</div>
-              </li>
-              <li>
-                <div class="day">07/23 周一</div>
-                <div class="price">&yen;6588</div>
-              </li>
-              <li>
-                <div class="day">07/23 周一</div>
-                <div class="price">&yen;6588</div>
-              </li>
-              <li>
-                <div class="day">07/23 周一</div>
-                <div class="price">&yen;6588</div>
+              <li v-for="(item, index) in productPriceStockVoList.slice(0, 7)" v-bind:key="item.id">
+                <div class="day">{{ item.state }} {{ item.week }}</div>
+                <div class="price">&yen;{{ item.aPrice }}</div>
               </li>
             </ul>
           </div>
@@ -204,58 +168,37 @@
           <div class="tit">产品经理推荐</div>
           <ul>
             <li>
-              <em>&nbsp;</em>
-              <span>【推荐】产品经理在这里说了一句话，不管是啥最多占两行，多了就产品【推荐】产品经理在这里说了一句话，不管是啥最多占两行，多了就产品经理在这里说了一句话，不管是啥最多占两行，多了就经理在这里说了一句话，不管是啥最多占两行，多了就</span>
+              <em>&nbsp;</em><a :href="productFeatures.urlOne" v-if="productFeatures.urlOne">{{ productFeatures.reasonOne }}</a><span v-else>{{ productFeatures.reasonOne }}</span>
             </li>
-            <li>
-              <em>&nbsp;</em>
-              <a href="http://www.baidu.com">【推荐】产品经理在这里说了一句话，不管是啥最多占产品经理在这里说了一句话，不管是啥最多占两行，多了就产品经理在这里说了一句话，不管是啥最多占两行，多了就两行，多了就产品经理在这里说了一句话，不管是啥最多占两行，多了就</a>
+            <li v-if="productFeatures.reasonTwo">
+              <em>&nbsp;</em><a :href="productFeatures.urlTwo" v-if="productFeatures.urlTwo">{{ productFeatures.reasonTwo }}</a><span v-else>{{ productFeatures.reasonTwo }}</span>
             </li>
-            <li>
-              <em>&nbsp;</em>
-              <a href="http://www.baidu.com">【推荐】产品经理在这里说了一句话，不管是啥最多占产品经理在这里说了一句话，不管是啥最多占两行，多了就产品经理在这里说了一句话，不管是啥最多占两行，多了就两行，多了就产品经理在这里说了一句话，不管是啥最多占两行，多了就</a>
+            <li v-if="productFeatures.reasonThree">
+              <em>&nbsp;</em><a :href="productFeatures.urlThree" v-if="productFeatures.urlThree">{{ productFeatures.reasonThree }}</a><span v-else>{{ productFeatures.reasonThree }}</span>
             </li>
           </ul>
         </div>
-        <div class="feature">
+        <div class="feature" v-if="productFeatures.recommendDes">
           <div class="tit">产品特色</div>
-          <div class="html" v-html="1"></div>
+          <div class="html" v-html="productFeatures.recommendDes"></div>
         </div>
       </div>
       <div class="pdt-trip" ref="pdtTrip">
         <div class="tit">行程安排</div>
-        <div class="html" v-html="aaaa"></div>
+        <div class="html" v-html="tripIntroduce.tripContent"></div>
       </div>
       <div class="pdt-cost" ref="pdtCost">
         <div class="tit">费用说明</div>
-        <div class="column-name">费用包含</div>
-        <ul>
-          <li>
-            <em>&nbsp;</em>
-            <span>产品经理在这里说了一句话，不管是啥最多占两行，多了就产品</span>
-          </li>
-          <li>
-            <em>&nbsp;</em>
-            <span>产品经理在这里说了一句话，不管是啥最多占两</span>
-          </li>
-          <li>
-            <em>&nbsp;</em>
-            <span>产品经理在这里说了一句话，不管是啥最多占两行，多了就产品产品经理在这里说了一句话，不管是啥最多占两行，多了就产品经理在这里说了一句话，不管是啥最多占两行，多了就经理在这里说了一句话，不管是啥最多占两行，多了就</span>
+        <div class="column-name" v-if="!$.isEmptyArr(costDesVo.costInclude)">费用包含</div>
+        <ul v-if="!$.isEmptyArr(costDesVo.costInclude)">
+          <li v-for="item in costDesVo.costInclude" v-bind:key="item.id">
+            <em></em><div class="name">{{ item.title }}</div><div class="cont" v-html="item.content"></div>
           </li>
         </ul>
-        <div class="column-name">自理费用</div>
-        <ul>
-          <li>
-            <em>&nbsp;</em>
-            <span>产品经理在这里说了一句话，不管是啥最多占两行，多了就产品</span>
-          </li>
-          <li>
-            <em>&nbsp;</em>
-            <span>产品经理在这里说了一句话，不管是啥最多占两</span>
-          </li>
-          <li>
-            <em>&nbsp;</em>
-            <span>产品经理在这里说了一句话，不管是啥最多占两行，多了就产品产品经理在这里说了一句话，不管是啥最多占两行，多了就产品经理在这里说了一句话，不管是啥最多占两行，多了就经理在这里说了一句话，不管是啥最多占两行，多了就</span>
+        <div class="column-name" v-if="!$.isEmptyArr(costDesVo.selfCost)">自理费用</div>
+        <ul v-if="!$.isEmptyArr(costDesVo.selfCost)">
+          <li v-for="item in costDesVo.selfCost" v-bind:key="item.id">
+            <em></em><div class="name">{{ item.title }}</div><div class="cont" v-html="item.content"></div>
           </li>
         </ul>
       </div>
@@ -312,7 +255,7 @@
           </dd>
         </dl> -->
       </div>
-      <div class="recommend">
+      <div class="recommend" v-if="false">
         <div class="column-name">更多产品推荐</div>
         <ul class="clearfix">
           <li>
@@ -336,8 +279,7 @@
         </ul>
       </div>
     </div>
-
-    <footer>
+    <footer v-if="!initAjax">
       <div class="tool">
         <div v-if="$.isAppClient()" class="kf" @click="serviceCfg.state = true">
           <em class="icon"></em>
@@ -353,7 +295,6 @@
       </div>
       <input type="button" value="开始预订">
     </footer>
-
     <FReturnTop :config="FReturnTopCfg"></FReturnTop>
     <FSelect :config="activityCfg" v-on:close="activityCfg.state = false" v-on:res="resActivity"></FSelect>
     <transition name="fade">
@@ -374,7 +315,6 @@
         </div>
       </section>
     </transition>
-
   </div>
 </template>
 
@@ -387,6 +327,8 @@
     name: 'lineDetails',
     data() {
       return {
+        initAjax: true,
+
         FHeaderCfg: {
           title: '线路详情'
         },
@@ -417,7 +359,16 @@
         tabNavsList: ['产品特色', '行程安排', '费用说明', '预订须知'],
         tabNavsActiveIndex: 0,
 
-        aaaa: "",
+        startCity: '',
+        supplierName: '',
+        productCode: '',
+        sellerProductName: '',
+        sellPrice: '',
+        productLable: '',
+        productPriceStockVoList: [],
+        productFeatures: [],
+        tripIntroduce: '',
+        costDesVo: ''
       }
     },
     computed: {
@@ -428,64 +379,15 @@
     created() {
       let _this = this
 
-      setTimeout(function () {
-        _this.swiperSlides = [
-          'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471589386361552.jpg',
-          'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471610801337121.jpg',
-          'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471619631454231.jpg',
-          'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471630905765623.jpg',
-          'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471637782772625.jpg',
-          'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471644966301223.jpg',
-          'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471652420162237.jpg',
-          'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471659359450747.jpg',
-          'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471666400140663.jpg',
-          'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471673847553720.jpg',
-          'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471691916163374.jpg',
-          'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471700229462437.jpg',
-          'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471709146356773.jpg',
-          'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471716496161432.jpg',
-          'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1534471723900535567.jpg'
-        ]
-        _this.activityCfg.items = [{
-            name: '测试1',
-            code: 1
-          },
-          {
-            name: '测试2',
-            code: 2
-          },
-          {
-            name: '测试3',
-            code: 3
-          },
-          {
-            name: '测试4',
-            code: 4
-          },
-          {
-            name: '测试5测试5测试5测试5测试5测试5测试5测试5测试5测试5测试5测试5测试5测试5',
-            code: 5
-          },
-          {
-            name: '测试6',
-            code: 6
-          },
-          {
-            name: '测试7',
-            code: 7
-          },
-          {
-            name: '测试8',
-            code: 8
-          },
-        ]
-        _this.$nextTick(function () {
-          _this.swiper.autoplay.start()
-          _this.addScrollEvent()
-        })
-      }, 200)
+      if (!_this.$route.query.productCode) {
+        _this.$router.push('/routerLost')
+        return
+      }
 
       _this.detail()
+    },
+    activated() {
+      this.$.stRemove('album')
     },
     mounted() {
       this.swiper.autoplay.stop()
@@ -498,20 +400,54 @@
         let res = await $.axiosPost({
           url: _this.api.detail,
           param: {
-            productCode: 12345678
+            productCode: _this.$route.query.productCode
           },
           load: true
         })
         if (!res) {
           return
         }
-        _this.aaaa = res.data
-        console.log(res)
+        let data = res.data
+        console.log(data)
+        _this.swiperSlides = data.productImgVoList
+        _this.startCity = data.startCity
+        _this.supplierName = data.supplierName
+        _this.productCode = data.productCode
+        _this.sellerProductName = data.sellerProductName
+        _this.sellPrice = data.sellPrice
+        _this.productLable = data.productLable
+
+        // 班期
+        data.productPriceStockVoList.forEach(function(list) {
+          Object.assign(list, {
+            aPrice: list.adultSellPrice / 100,
+            cPrice: list.childrenSellPrice / 100,
+            week: '周' + _this.$.getWeek(list.sellDate),
+            state: _this.$.formatDay(list.sellDate, '/').substring(5)
+          })
+          _this.productPriceStockVoList.push(list)
+        })
+
+        _this.productFeatures = data.productFeatures
+        _this.tripIntroduce = data.tripIntroduce
+        _this.costDesVo = data.costDesVo
+
+        _this.$nextTick(function () {
+          _this.swiper.autoplay.start()
+          _this.addScrollEvent()
+        })
+        _this.initAjax = false
       },
       slideChange() {
         this.swiperIndex = this.swiper.activeIndex
       },
       slideClicked() {
+        if (this.$.isEmptyArr(this.swiperSlides)) {
+          return
+        }
+        this.$.stSet({
+          'album': this.swiperSlides
+        })
         this.$router.push({
           path: '/album'
         })

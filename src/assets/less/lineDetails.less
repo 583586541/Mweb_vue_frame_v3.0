@@ -87,7 +87,7 @@
       font-size: .4rem;
       color: #ff3f12;
       line-height: 1;
-      margin: .16rem 0 .28rem;
+      margin: .16rem 0 0;
 
       em,
       strong {
@@ -99,6 +99,7 @@
     }
 
     .tips {
+      margin-top: .28rem;
       line-height: .28rem;
       font-size: .2rem;
       color: #03b68f;
@@ -127,8 +128,10 @@
       color: #666666;
       font-size: .32rem;
       line-height: 1.5;
-      border-bottom: 1px solid #ddd;
-
+      border-top: 1px solid #ddd;
+      &:first-child {
+        border: none;
+      }
       .key {
         width: .86rem;
       }
@@ -554,7 +557,7 @@
   }
 
   .pdt-feature {
-    padding: 0 .24rem .12rem;
+    padding: 0 .24rem .36rem;
     color: #202020;
     background-color: #fff;
     margin-bottom: .2rem;
@@ -598,10 +601,15 @@
     }
 
     .feature {
-      padding-bottom: .24rem;
 
       .tit {
         padding: .34rem 0;
+      }
+
+      .html {
+        font-size: .28rem;
+        line-height: .4rem;
+        color: #202020;
       }
     }
   }
@@ -615,6 +623,15 @@
       font-size: .36rem;
       color: #202020;
       line-height: .76rem;
+    }
+
+    .html {
+      * {
+        font-size: .28rem;
+        font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+        color: #202020;
+        line-height: 1.5;
+      }
     }
   }
 
@@ -645,6 +662,13 @@
     li {
       margin-bottom: .12rem;
       &:extend(.df);
+      
+      * {
+        font-size: .28rem;
+        font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+        color: #202020;
+        line-height: 1.5;
+      }
     }
 
     em {
@@ -653,6 +677,16 @@
       margin: .14rem .12rem 0 0;
       background-color: #666;
       border-radius: 100%;
+    }
+
+    .name {
+      width: 1.2rem;
+      margin-right: .16rem;
+      color: #666;
+    }
+
+    .cont {
+      flex: 1;
     }
   }
 
