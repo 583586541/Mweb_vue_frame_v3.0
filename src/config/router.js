@@ -23,6 +23,9 @@ import addUser from '@/views/addUser'
 import searchUser from '@/views/searchUser'
 import invoice from '@/views/invoice'
 import specialNeeds from '@/views/specialNeeds'
+import visaNotes from '@/views/visaNotes'
+import bookNotes from '@/views/bookNotes'
+import buyNotes from '@/views/buyNotes'
 
 Vue.use(Router)
 
@@ -133,6 +136,30 @@ export default new Router({
       component: schedule,
       meta: {
         title: '选择日期和人数'
+      }
+    },
+    {
+      path: '/buyNotes',
+      name: 'buyNotes',
+      component: buyNotes,
+      meta: {
+        title: '购买须知'
+      }
+    },
+    {
+      path: '/bookNotes',
+      name: 'bookNotes',
+      component: bookNotes,
+      meta: {
+        title: '预订须知'
+      }
+    },
+    {
+      path: '/visaNotes',
+      name: 'visaNotes',
+      component: visaNotes,
+      meta: {
+        title: '签证须知'
       }
     },
     {

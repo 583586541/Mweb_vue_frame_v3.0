@@ -146,7 +146,7 @@
         <div class="schedule-wrap">
           <div class="list">
             <ul class="clearfix">
-              <li v-for="(item, index) in productPriceStockVoList.slice(0, 7)" v-bind:key="item.id">
+              <li v-for="item in productPriceStockVoList.slice(0, 7)" v-bind:key="item.id">
                 <div class="day">{{ item.state }} {{ item.week }}</div>
                 <div class="price">&yen;{{ item.aPrice }}</div>
               </li>
@@ -203,23 +203,17 @@
         </ul>
       </div>
       <ul class="pdt-book-notice" ref="pdtBookNotice">
-        <li>
-          <router-link to="/a">
-            <span>签证须知</span>
-            <em class="icon"></em>
-          </router-link>
+        <li @click="jumpVisaNotes" v-if="!$.isEmptyArr(visaNotes)">
+          <span>签证须知</span>
+          <em class="icon"></em>
         </li>
-        <li>
-          <router-link to="/a">
-            <span>预定须知</span>
-            <em class="icon"></em>
-          </router-link>
+        <li @click="jumpBookNotes">
+          <span>预订须知</span>
+          <em class="icon"></em>
         </li>
-        <li>
-          <router-link to="/a">
-            <span>购买须知</span>
-            <em class="icon"></em>
-          </router-link>
+        <li @click="jumpBuyNotes">
+          <span>购买须知</span>
+          <em class="icon"></em>
         </li>
       </ul>
       <div class="travels" ref="travels" style="padding: 0;margin: 0;">
@@ -368,7 +362,11 @@
         productPriceStockVoList: [],
         productFeatures: [],
         tripIntroduce: '',
-        costDesVo: ''
+        costDesVo: '',
+
+        visaNotes: [],
+        bookNotes: [],
+        buyNotes: [],
       }
     },
     computed: {
@@ -388,6 +386,10 @@
     },
     activated() {
       this.$.stRemove('album')
+
+      this.$.stRemove('visa')
+      this.$.stRemove('book')
+      this.$.stRemove('buy')
     },
     mounted() {
       this.swiper.autoplay.stop()
@@ -408,7 +410,7 @@
           return
         }
         let data = res.data
-        console.log(data)
+
         _this.swiperSlides = data.productImgVoList
         _this.startCity = data.startCity
         _this.supplierName = data.supplierName
@@ -431,7 +433,10 @@
         _this.productFeatures = data.productFeatures
         _this.tripIntroduce = data.tripIntroduce
         _this.costDesVo = data.costDesVo
-
+        _this.visaNotes = data.visa
+        _this.bookNotes = data.reserve
+        _this.buyNotes = data.buy
+        
         _this.$nextTick(function () {
           _this.swiper.autoplay.start()
           _this.addScrollEvent()
@@ -526,6 +531,24 @@
         _this.$nextTick(function () {
           _this.$set(_this.activityCfg, 'state', false)
         })
+      },
+      jumpVisaNotes() {
+        this.$.stSet({
+          'visa': this.visaNotes
+        })
+        this.$router.push('/visaNotes')
+      },
+      jumpBookNotes() {
+        this.$.stSet({
+          'book': this.bookNotes
+        })
+        this.$router.push('/bookNotes')
+      },
+      jumpBuyNotes() {
+        this.$.stSet({
+          'buy': this.buyNotes
+        })
+        this.$router.push('/buyNotes')
       }
     },
     components: {
