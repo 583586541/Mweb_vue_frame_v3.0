@@ -377,7 +377,6 @@
         buyNotes: [],
 
         joinTransportList: []
-
       }
     },
     computed: {
