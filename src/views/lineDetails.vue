@@ -141,7 +141,7 @@
       <div class="schedule">
         <div class="place">
           <span class="area"><em class="icon"></em>{{ startCity }}出发</span>
-          <router-link class="more" to="/departure">更多出发地<em class="icon"></em></router-link>
+          <span class="more" @click="moreDeparture">更多出发地<em class="icon"></em></span>
         </div>
         <div class="schedule-wrap">
           <div class="list">
@@ -152,8 +152,8 @@
               </li>
             </ul>
           </div>
-          <div class="more-schedule">
-            <router-link to="/schedule">更多班期</router-link>
+          <div class="more-schedule" @click="jumpSchedule">
+            <span>更多班期</span>
           </div>
         </div>
 
@@ -280,14 +280,14 @@
           <span>在线客服</span>
         </div>
         <div v-else class="kf">
-          <a href="Tel:19959522028"><em class="icon"></em><span>在线客服</span></a>
+          <a href="Tel:020-85829620"><em class="icon"></em><span>在线客服</span></a>
         </div>
-        <div class="collect" v-if="$.isAppClient()">
+        <!-- <div class="collect" v-if="$.isAppClient()" @click="changeCollect">
           <em class="icon"></em>
           <span>收藏</span>
-        </div>
+        </div> -->
       </div>
-      <input type="button" value="开始预订">
+      <input type="button" value="开始预订" @click="jumpSchedule">
     </footer>
     <FReturnTop :config="FReturnTopCfg"></FReturnTop>
     <FSelect :config="activityCfg" v-on:close="activityCfg.state = false" v-on:res="resActivity"></FSelect>
@@ -298,7 +298,7 @@
           <div class="FSelect-body">
             <ul ref="items">
               <li class="telephone">
-                <a href="Tel:19959522028"><em></em>语音通话</a>
+                <a href="Tel:020-85829620"><em></em>语音通话</a>
               </li>
               <li class="artificial" @click="$.mutualToApp({ project: 'appNb', password: 'nb', param: { jiba: '18cm' }})">
                 <em></em>在线客服
@@ -309,6 +309,7 @@
         </div>
       </section>
     </transition>
+    <FAlert :config="FAlertCfg" v-on:close="FAlertCfg.state = false"></FAlert>
   </div>
 </template>
 
@@ -317,11 +318,13 @@
   import FProportion from '../components/FProportion/FProportion'
   import FReturnTop from '../components/FReturnTop/FReturnTop'
   import FSelect from '../components/FSelect/FSelect'
+  import FAlert from '../components/FAlert/FAlert'
   export default {
     name: 'lineDetails',
     data() {
       return {
         initAjax: true,
+        token: null,
 
         FHeaderCfg: {
           title: '线路详情'
@@ -334,6 +337,11 @@
         },
         serviceCfg: {
           state: false
+        },
+        FAlertCfg: {
+          title: '温馨提示', // 标题
+          state: false, // 显示状态
+          cont: '拼命研发中，敬请期待...', // 内容
         },
         swiperOption: {
           pagination: {
@@ -367,6 +375,9 @@
         visaNotes: [],
         bookNotes: [],
         buyNotes: [],
+
+        joinTransportList: []
+
       }
     },
     computed: {
@@ -382,6 +393,11 @@
         return
       }
 
+      // if (this.$.isAppClient()) {
+      //   _this.getToken()
+      // } else {
+      //   _this.detail()
+      // }
       _this.detail()
     },
     activated() {
@@ -390,20 +406,47 @@
       this.$.stRemove('visa')
       this.$.stRemove('book')
       this.$.stRemove('buy')
+
+      this.$.stRemove('departure')
+
+      let startCity = this.$.stGet('startCity')
+      if (startCity) {
+        this.startCity = startCity.startCityName
+        this.$.stRemove('startCity')
+      }
     },
     mounted() {
       this.swiper.autoplay.stop()
       this.FReturnTopCfg = this.$refs.vBody
     },
     methods: {
+      // 找APP拿token
+      getToken() {
+        let _this = this
+
+        window.callMethod = function (values) {
+          _this.token = values
+          _this.detail()
+        }
+      },
       async detail() {
         let _this = this,
           $ = _this.$
+        
+        let param = {
+          productCode: _this.$route.query.productCode
+        }
+
+        // 已登录
+        if (_this.token) {
+          Object.assign(param, {
+            'token': _this.token
+          })
+        }
+
         let res = await $.axiosPost({
           url: _this.api.detail,
-          param: {
-            productCode: _this.$route.query.productCode
-          },
+          param: param,
           load: true
         })
         if (!res) {
@@ -436,12 +479,17 @@
         _this.visaNotes = data.visa
         _this.bookNotes = data.reserve
         _this.buyNotes = data.buy
-        
-        _this.$nextTick(function () {
-          _this.swiper.autoplay.start()
-          _this.addScrollEvent()
-        })
+
+        _this.joinTransportList = data.joinTransportList
+
         _this.initAjax = false
+
+        _this.$nextTick(function () {
+          setTimeout(function() {
+            _this.swiper.autoplay.start()
+            _this.addScrollEvent()
+          }, 166)
+        })
       },
       slideChange() {
         this.swiperIndex = this.swiper.activeIndex
@@ -549,13 +597,41 @@
           'buy': this.buyNotes
         })
         this.$router.push('/buyNotes')
+      },
+      moreDeparture() {
+        let _this = this
+
+        _this.$.stSet({
+          'departure': _this.joinTransportList
+        })
+        _this.$router.push('/departure')
+      },
+      // 收藏、暂停开发
+      changeCollect() {
+        let _this = this
+        if (!_this.token) {
+          _this.$.mutualToApp({
+            'project': 'yfly',
+            'password': 'login',
+            'param': { 'jiji': '18cm' }
+          })
+          return
+        }
+      },
+      jumpSchedule() {
+        let _this = this
+        // _this.$set(_this.FAlertCfg, 'state', true)
+        // return
+
+        _this.$router.push('/schedule')
       }
     },
     components: {
       FHeader,
       FProportion,
       FReturnTop,
-      FSelect
+      FSelect,
+      FAlert
     }
   }
 </script>

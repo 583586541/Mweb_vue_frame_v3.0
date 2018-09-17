@@ -7,7 +7,7 @@
           <div class="FAlert-header">{{ config.title }}</div>
           <div class="FAlert-html">{{ config.cont }}</div>
         </div>
-        <div class="FAlert-close" @click="close">我知道了</div>
+        <div class="FAlert-close" @click="close">OK</div>
       </div>
     </section>
   </transition>

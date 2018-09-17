@@ -505,7 +505,7 @@
         text-align: center;
         &:extend(.jccaic);
 
-        a {
+        span {
           padding: .2rem;
           width: .56rem;
           color: #03b68f;
@@ -561,6 +561,10 @@
     color: #202020;
     background-color: #fff;
     margin-bottom: .2rem;
+
+    img {
+      max-width: 100%;
+    }
 
     .tit {
       font-size: .36rem;
@@ -956,6 +960,16 @@
 
     .artificial em {
       .bg-image('artificial.png');
+    }
+  }
+
+  .FAlert {
+    .FAlert-header {
+      
+    }
+    .FAlert-html {
+      min-height: 1rem;
+      &:extend(.jccaic);
     }
   }
 }

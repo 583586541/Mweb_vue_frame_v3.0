@@ -6,7 +6,7 @@
         <div class="item" v-for="item in mainList" v-bind:key="item.id" ref="anchor">
           <div class="initial">{{ item.initial }}</div>
           <ul class="item-list">
-            <li v-for="list in item.list" v-bind:key="list.id">{{ list.name }}</li>
+            <li v-for="list in item.list" v-bind:key="list.id" @click="changePlace(list)">{{ list.startCityName }}</li>
           </ul>
         </div>
       </div>
@@ -37,247 +37,40 @@
       }
     },
     created() {
-      let _this = this
-
-      setTimeout(function () {
-        _this.mainList = [{
-            initial: 'A',
-            list: [{
-                name: '阿里郎',
-                code: 10000
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              }
-            ]
-          },
-          {
-            initial: 'B',
-            list: [{
-              name: '北京',
-              code: 10002
-            }]
-          },
-          {
-            initial: 'C',
-            list: [{
-                name: '阿里郎',
-                code: 10000
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              },
-              {
-                name: '阿歌姬',
-                code: 10001
-              }
-            ]
-          },
-          {
-            initial: 'F',
-            list: [{
-                name: '莆田',
-                code: 10003
-              },
-              {
-                name: '莆田',
-                code: 10003
-              },
-              {
-                name: '莆田',
-                code: 10003
-              },
-              {
-                name: '莆田',
-                code: 10003
-              },
-              {
-                name: '莆田',
-                code: 10003
-              },
-              {
-                name: '莆田',
-                code: 10003
-              },
-            ]
-          },
-          {
-            initial: 'P',
-            list: [{
-              name: '莆田',
-              code: 10003
-            }]
-          }
-        ]
-      }, 1000)
+      this.arrangeFirstLatter()
     },
     methods: {
+      arrangeFirstLatter() {
+        let _this = this, firstLetters = []
+
+        let list = _this.$.stGet('departure')
+        list.forEach(item => {
+          firstLetters.push(item.firstLetter)
+        })
+        firstLetters = _this.$.arrDistinct(firstLetters)
+        
+        firstLetters.forEach(item => {
+          _this.mainList.push({
+            'initial': item,
+            'list': []
+          })
+        })
+        _this.arrangeClassify(list)
+      },
+      arrangeClassify(list) {
+        let _this = this, mainList = _this.mainList
+        
+        outer:
+        for (let i = 0; i < list.length; i++) {
+          inner:
+          for (let s = 0; s < mainList.length; s++) {
+            if (list[i].firstLetter == mainList[s].initial) {
+              _this.mainList[s].list.push(list[i])
+              break inner
+            }
+          }
+        }
+      },
       jump(i) {
         let _this = this,
           ref = _this.$refs
@@ -288,6 +81,14 @@
           ele: ref.main,
           target: offsetTop
         })
+      },
+      changePlace(item) {
+        let _this = this
+
+        _this.$.stSet({
+          'startCity': item
+        })
+        _this.$router.back(-1)
       }
     },
     components: {

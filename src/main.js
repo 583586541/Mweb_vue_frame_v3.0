@@ -11,9 +11,6 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
-const FastClick = require('fastclick')
-FastClick.attach(document.body)
-
 Vue.prototype.api = require('./config/api').default
 
 require('./assets/less/css.less')
