@@ -1,3 +1,4 @@
+<!-- http://192.168.1.82:8888/#/register?recommendId=19959522028 -->
 <template>
   <div class="register-v v-wrap">
     <FHeader :config="FHeaderCfg"></FHeader>
@@ -28,8 +29,8 @@
         <div class="FCell">
           <div class="key referral-code"></div>
           <div class="val">
-            <input class="input" disabled type="tel" maxlength="11" placeholder="注册推荐码" v-model.trim="referralCode">
-            <!-- <span class="icon empty" v-show="referralCode" @click="referralCode = ''"></span> -->
+            <input class="input" disabled type="tel" maxlength="11" placeholder="注册推荐码" v-model.trim="recommendId">
+            <!-- <span class="icon empty" v-show="recommendId" @click="recommendId = ''"></span> -->
           </div>
         </div>
         <div class="GVRP">注册即表示同意
@@ -60,15 +61,23 @@
         msgCode: '',
         password: '',
         visualization: false,
-        referralCode: '13055215093'
+        recommendId: '13055215093'
       }
     },
     created() {
       let _this = this
 
+      // 无推荐码，路由错误
+      let recommendId = _this.$route.query.recommendId
+      if (!recommendId) {
+        _this.$router.push('/routerLost')
+        return
+      } else {
+        _this.recommendId = recommendId
+      }
+      
       if (_this.api.ROOT) {
         _this.iphone = '19959522028'
-        // _this.msgCode = '123456'
         _this.password = 'a123123'
       }
     },
@@ -106,7 +115,7 @@
         if (!$.regTest(_this.password, 'password')) {
           return
         }
-        if (!$.regTest(_this.referralCode, 'iphone', '请输入正确的注册推荐码')) {
+        if (!$.regTest(_this.recommendId, 'iphone', '请输入正确的注册推荐码')) {
           return
         }
 
@@ -116,7 +125,7 @@
             phone: _this.iphone,
             smsCode: _this.msgCode,
             password: md5(_this.password).toUpperCase(),
-            recomCode: _this.referralCode
+            recomCode: _this.recommendId
           },
           load: true
         })

@@ -52,7 +52,7 @@ export default new Router({
       name: 'GVRP',
       component: GVRP,
       meta: {
-        title: '牛掰用户注册协议'
+        title: '牛掰旅游服务协议'
       }
     },
     {

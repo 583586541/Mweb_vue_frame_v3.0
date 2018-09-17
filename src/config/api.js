@@ -3,6 +3,7 @@ const url = {
   getRegisterCode: '/api/message/getRegisterCode',
   register: '/api/account/register',
   detail: '/api/product/detail',
+  wechatSign: '/api/service/wechatSign'
 }
 
 // 常量
