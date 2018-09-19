@@ -141,7 +141,7 @@
       <div class="schedule">
         <div class="place">
           <span class="area"><em class="icon"></em>{{ startCity }}出发</span>
-          <span class="more" @click="moreDeparture">更多出发地<em class="icon"></em></span>
+          <span v-if="!$.isEmptyArr(joinTransportList)" class="more" @click="moreDeparture">更多出发地<em class="icon"></em></span>
         </div>
         <div class="schedule-wrap">
           <div class="list">
@@ -498,7 +498,7 @@
           },
           load: false, // 请求过程中是否展示全屏loading
           custom: { // 自定义分享内容
-            title: _this.supplierName,
+            title: _this.sellerProductName,
             desc: '品质旅游，就上牛掰',
             link: document.location.href,
             imgUrl: 'https://niub-dev.oss-cn-shanghai.aliyuncs.com/logo.png'
@@ -634,8 +634,8 @@
       },
       jumpSchedule() {
         let _this = this
-        // _this.$set(_this.FAlertCfg, 'state', true)
-        // return
+        _this.$set(_this.FAlertCfg, 'state', true)
+        return
 
         _this.$router.push('/schedule')
       }

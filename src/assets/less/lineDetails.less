@@ -28,20 +28,34 @@
         vertical-align: top;
       }
 
+      .left-side {
+        width: 4.2rem;
+        .supplier {
+          &:extend(.db);
+          &:extend(.ellipsis);
+        }
+      }
+
+      .right-side {
+        flex: 1;
+        align-self: flex-end;
+        text-align: right;
+      }
+
       .departure {
         &:extend(.pr);
         padding-right: .14rem;
         margin-right: .14rem;
 
-        &:after {
-          content: '\200B';
-          width: 1px;
-          height: .28rem;
-          &:extend(.pa);
-          right: 0;
-          top: .07rem;
-          background-color: #fff;
-        }
+        // &:after {
+        //   content: '\200B';
+        //   width: 1px;
+        //   height: .28rem;
+        //   &:extend(.pa);
+        //   right: 0;
+        //   top: .07rem;
+        //   background-color: #fff;
+        // }
       }
     }
 
