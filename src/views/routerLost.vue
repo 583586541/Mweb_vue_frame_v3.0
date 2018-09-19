@@ -6,8 +6,8 @@
         <img src="../assets/images/404.png" alt="404错误">
       </div>
       <div class="hint">唉，真不巧，网页走丢了</div>
-      <div class="back-v" v-if="false">
-        <router-link to="/demo">返回示例页</router-link>
+      <div class="back-v">
+        <router-link to="/register?recommendId=18720262936">返回注册页</router-link>
       </div>
     </div>
   </div>

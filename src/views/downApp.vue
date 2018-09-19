@@ -6,7 +6,7 @@
       <p>下载牛掰旅游，开启你牛掰的人生</p>
       <img src="../assets/images/logo.png" alt="logo">
       <div class="url">
-        <a href="javascript:void(0);">点击下载</a>
+        <a href="https://www.pgyer.com/niubailvyou">点击下载</a>
       </div>
     </div>
   </div>

@@ -50,6 +50,7 @@
   } from 'vux'
   import FHeader from '../components/FHeader/FHeader'
   import FMsgCode from '../components/FMsgCode/FMsgCode'
+  import weixinShare from '../assets/js/weixinShare'
   export default {
     name: 'register',
     data() {
@@ -80,6 +81,20 @@
         _this.iphone = '19959522028'
         _this.password = 'a123123'
       }
+
+      weixinShare.weixinSign({
+        url: this.api.wechatSign, // 验签接口
+        param: { // 参数
+          url: document.location.href
+        },
+        load: false, // 请求过程中是否展示全屏loading
+        custom: { // 自定义分享内容
+          title: '牛掰旅游',
+          desc: '品质旅游，就上牛掰',
+          link: document.location.href,
+          imgUrl: 'https://niub-dev.oss-cn-shanghai.aliyuncs.com/logo.png'
+        }
+      })
     },
     methods: {
       async getRegisterCode() {

@@ -319,6 +319,7 @@
   import FReturnTop from '../components/FReturnTop/FReturnTop'
   import FSelect from '../components/FSelect/FSelect'
   import FAlert from '../components/FAlert/FAlert'
+  import weixinShare from '../assets/js/weixinShare'
   export default {
     name: 'lineDetails',
     data() {
@@ -488,6 +489,20 @@
             _this.swiper.autoplay.start()
             _this.addScrollEvent()
           }, 166)
+        })
+
+        weixinShare.weixinSign({
+          url: _this.api.wechatSign, // 验签接口
+          param: { // 参数
+            url: document.location.href
+          },
+          load: false, // 请求过程中是否展示全屏loading
+          custom: { // 自定义分享内容
+            title: _this.supplierName,
+            desc: '品质旅游，就上牛掰',
+            link: document.location.href,
+            imgUrl: 'https://niub-dev.oss-cn-shanghai.aliyuncs.com/logo.png'
+          }
         })
       },
       slideChange() {

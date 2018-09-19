@@ -38,10 +38,10 @@ export default {
     }
     Vue.wechat.config({
       debug: false,
-      appId: res.appid,
-      timestamp: res.timestamp,
-      nonceStr: res.nonceStr,
-      signature: res.signature,
+      appId: res.data.appid,
+      timestamp: res.data.timestamp,
+      nonceStr: res.data.nonceStr,
+      signature: res.data.signature,
       jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline']
     })
     this.customWeixinShare(data.custom)

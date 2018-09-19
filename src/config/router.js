@@ -26,6 +26,9 @@ import specialNeeds from '@/views/specialNeeds'
 import visaNotes from '@/views/visaNotes'
 import bookNotes from '@/views/bookNotes'
 import buyNotes from '@/views/buyNotes'
+import aboutUs from '@/views/aboutUs'
+import privacyPolicy from '@/views/privacyPolicy'
+import businessLicence from '@/views/businessLicence'
 
 Vue.use(Router)
 
@@ -56,6 +59,30 @@ export default new Router({
       component: GVRP,
       meta: {
         title: '牛掰旅游服务协议'
+      }
+    },
+    {
+      path: '/aboutUs',
+      name: 'aboutUs',
+      component: aboutUs,
+      meta: {
+        title: '广州牛掰旅游科技有限公司'
+      }
+    },
+    {
+      path: '/businessLicence',
+      name: 'businessLicence',
+      component: businessLicence,
+      meta: {
+        title: '营业执照'
+      }
+    },
+    {
+      path: '/privacyPolicy',
+      name: 'privacyPolicy',
+      component: privacyPolicy,
+      meta: {
+        title: '用户隐私制度'
       }
     },
     {

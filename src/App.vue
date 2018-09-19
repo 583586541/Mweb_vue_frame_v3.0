@@ -19,17 +19,21 @@
       this.updateTitle()
       this.navigation()
 
+      let routeName = this.$route.name
+      if (routeName == 'lineDetails' || routeName == 'register') {
+        return
+      }
       weixinShare.weixinSign({
         url: this.api.wechatSign, // 验签接口
         param: { // 参数
           url: document.location.href
         },
-        load: true, // 请求过程中是否展示全屏loading
+        load: false, // 请求过程中是否展示全屏loading
         custom: { // 自定义分享内容
-          title: 'HTML5移动端开发框架v3.0',
-          desc: 'Author: Junbing Fu, Last update: 2018/09/12',
-          link: document.location.href,
-          imgUrl: 'http://yfqc-dev.oss-cn-shanghai.aliyuncs.com/1528880799157105466.jpeg'
+          title: '牛掰旅游',
+          desc: '品质旅游，就上牛掰',
+          link: 'http://mweb.gznbly.com/cpxl/#/register?recommendId=18720262936',
+          imgUrl: 'https://niub-dev.oss-cn-shanghai.aliyuncs.com/logo.png'
         }
       })
     },
