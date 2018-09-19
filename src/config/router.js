@@ -29,6 +29,7 @@ import buyNotes from '@/views/buyNotes'
 import aboutUs from '@/views/aboutUs'
 import privacyPolicy from '@/views/privacyPolicy'
 import businessLicence from '@/views/businessLicence'
+import distributor from '@/views/distributor'
 
 Vue.use(Router)
 
@@ -75,6 +76,14 @@ export default new Router({
       component: businessLicence,
       meta: {
         title: '营业执照'
+      }
+    },
+    {
+      path: '/distributor',
+      name: 'distributor',
+      component: distributor,
+      meta: {
+        title: '升级分销商协议'
       }
     },
     {
