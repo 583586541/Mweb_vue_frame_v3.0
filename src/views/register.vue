@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="GVRP">注册即表示同意
-          <router-link to="/GVRP">《牛掰用户注册协议》</router-link>
+          <router-link to="/GVRP">《牛掰旅游服务协议》</router-link>
         </div>
         <div class="do-register">
           <input type="button" value="注册" @click="register">
