@@ -31,7 +31,7 @@
       let _this = this
 
       if (_this.$.getPhoneSystem() == 'iPhone') {
-        _this.downSrc = 'http://oss.gznbly.com/ios/niub.ipa'
+        _this.downSrc = 'itms-services://?action=download-manifest&url=https://niub-prod.oss-cn-shanghai.aliyuncs.com/ios/archive.plist'
       } else {
         _this.downSrc = 'http://oss.gznbly.com/android/niub.apk'
       }
