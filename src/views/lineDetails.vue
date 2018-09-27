@@ -9,15 +9,19 @@
             <img :src="api.OSSPATH + slide.imgUrl" :alt="slide.imgName">
           </swiper-slide>
         </swiper>
-        <div class="des">
-          <div class="left-side">
-            <span class="departure">{{ startCity }}</span>
-            <span class="supplier">{{ supplierName }}</span>
+        <div class="des-wrap">
+          <div class="des">
+            <div class="left-side">
+              <span class="departure">{{ startCity }}</span>
+              <span class="supplier">{{ supplierName }}</span>
+            </div>
+            <div class="right-side">
+              <div class="swiper-index" @click="slideClicked">{{ swiperIndex + 1 }} / {{ swiperSlides.length }}
+                <em class="icon"></em>
+              </div>
+              <div class="number">编号：{{ productCode }}</div>
+            </div>
           </div>
-          <div class="right-side number">编号：{{ productCode }}</div>
-        </div>
-        <div class="swiper-index" @click="slideClicked">{{ swiperIndex + 1 }} / {{ swiperSlides.length }}
-          <em class="icon"></em>
         </div>
       </div>
       <div class="synopsis">

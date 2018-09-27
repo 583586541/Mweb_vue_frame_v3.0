@@ -6,18 +6,27 @@
 
   .banner {
     &:extend(.pr);
+    background: linear-gradient(to bottom, transparent 80%, rgba(0, 0, 0, 1));
 
     .FSwiper {
       height: 4.2rem;
       overflow: hidden;
     }
 
-    .des {
+    .des-wrap {
       &:extend(.pa);
-      bottom: .34rem;
-      left: .24rem;
-      right: .24rem;
+      bottom: 0;
+      left: 0;
+      right: 0;
       z-index: 2;
+      padding-top: .4rem;
+      background: linear-gradient(to bottom, transparent 10%, rgba(0, 0, 0, 1));
+    }
+
+    .des {
+
+      margin: 0 .24rem .34rem;
+
       &:extend(.jcsb);
       font-size: .28rem;
       line-height: 1.5;
@@ -30,6 +39,7 @@
 
       .left-side {
         width: 4.2rem;
+
         .supplier {
           &:extend(.db);
           &:extend(.ellipsis);
@@ -38,7 +48,7 @@
 
       .right-side {
         flex: 1;
-        align-self: flex-end;
+        // align-self: flex-end;
         text-align: right;
       }
 
@@ -57,29 +67,31 @@
         //   background-color: #fff;
         // }
       }
-    }
 
-    .swiper-index {
-      &:extend(.pa);
-      bottom: .82rem;
-      right: .24rem;
-      z-index: 2;
-      line-height: .4rem;
-      background-color: rgba(0, 0, 0, .5);
-      border-radius: .2rem;
-      color: #fff;
-      font-size: .28rem;
-      padding: 0 .14rem;
-
-      .icon {
+      .swiper-index {
         &:extend(.dib);
-        vertical-align: top;
-        width: .28rem;
-        height: .24rem;
-        .bg-image('album.png');
-        margin: .08rem 0 0 .06rem;
+        // bottom: .82rem;
+        // right: .24rem;
+        // z-index: 2;
+        line-height: .42rem;
+        background-color: rgba(0, 0, 0, .5);
+        border-radius: .2rem;
+        color: #fff;
+        font-size: .28rem;
+        padding: 0 .14rem;
+
+        .icon {
+          &:extend(.dib);
+          vertical-align: top;
+          width: .28rem;
+          height: .24rem;
+          .bg-image('album.png');
+          margin: .09rem 0 0 .06rem;
+        }
       }
     }
+
+
   }
 
   .synopsis {
@@ -143,9 +155,11 @@
       font-size: .32rem;
       line-height: 1.5;
       border-top: 1px solid #ddd;
+
       &:first-child {
         border: none;
       }
+
       .key {
         width: .86rem;
       }
@@ -680,7 +694,7 @@
     li {
       margin-bottom: .12rem;
       &:extend(.df);
-      
+
       * {
         font-size: .28rem;
         font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
@@ -719,6 +733,7 @@
       border-bottom: 1px solid #ddd;
       &:extend(.aic);
       margin-right: .24rem;
+
       &:last-child {
         border: none;
       }
@@ -978,9 +993,8 @@
   }
 
   .FAlert {
-    .FAlert-header {
-      
-    }
+    .FAlert-header {}
+
     .FAlert-html {
       min-height: 1rem;
       &:extend(.jccaic);
